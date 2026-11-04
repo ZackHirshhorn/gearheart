@@ -904,6 +904,296 @@
     return s;
   };
 
+  /* ----- shared shapes for Pages 10-13 ----- */
+  function forklift(x, y, sc, flip) { // simple forklift silhouette blocking an exit
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + (flip ? -sc : sc) + " " + sc + ')">';
+    g += '<rect x="-70" y="-70" width="70" height="56" fill="' + C.rust2 + '" stroke="' + C.ink + '" stroke-width="3"/>'; // body
+    g += '<rect x="-56" y="-120" width="40" height="52" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="2"/>'; // cab
+    g += '<rect x="-52" y="-114" width="30" height="24" fill="#06101a"/>'; // window
+    g += '<rect x="2" y="-120" width="6" height="106" fill="' + C.steel + '"/>'; // mast
+    g += '<rect x="8" y="-20" width="46" height="8" fill="' + C.steel3 + '"/>'; // fork
+    g += '<circle cx="-54" cy="-6" r="16" fill="#05080f" stroke="' + C.steel3 + '" stroke-width="3"/><circle cx="-14" cy="-6" r="12" fill="#05080f" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    g += rimline("M0 -120L-70 -70", "#ffb26b", 2);
+    return g + "</g>";
+  }
+  function controlPanel(x, y, sc, lit) { // a start-button control panel
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-60" y="-120" width="120" height="120" rx="8" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-48" y="-108" width="96" height="40" fill="#06141a"/>';
+    g += '<path d="M-40 -88H-10L-2 -100H6L14 -76H40" stroke="#6fd3ff" stroke-width="2.5" fill="none"/>';
+    g += '<circle cx="0" cy="-34" r="22" fill="' + (lit ? "#2fae4a" : "#1c5a2a") + '" stroke="#0d1014" stroke-width="3"/>';
+    g += '<circle cx="0" cy="-34" r="22" fill="' + (lit ? "#7dff9a" : "#2fae4a") + '" opacity="' + (lit ? ".45" : ".2") + '"/>';
+    g += '<rect x="-56" y="0" width="112" height="14" fill="' + C.steel2 + '"/>';
+    return g + "</g>";
+  }
+  function phone(x, y, sc, label) { // a phone screen with a chat thread
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-46" y="-90" width="92" height="180" rx="12" fill="#10151b" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    g += '<rect x="-38" y="-74" width="76" height="150" fill="#1a2a36"/>';
+    g += '<text x="0" y="-56" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#9fe0ff">' + label + '</text>';
+    g += '<rect x="-30" y="-44" width="52" height="18" rx="8" fill="#2a4a6a"/>';
+    g += '<rect x="-12" y="-18" width="48" height="18" rx="8" fill="#3a6a4a"/>';
+    g += '<rect x="-30" y="8" width="56" height="18" rx="8" fill="#2a4a6a"/>';
+    g += '<rect x="-4" y="34" width="40" height="18" rx="8" fill="#3a6a4a"/>';
+    return g + "</g>";
+  }
+  function jet(x, y, sc) { // small private jet silhouette
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<path d="M-150 0Q-90 -26 60 -26L130 -18Q150 -14 150 -6L130 2Q40 10 -150 8Z" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<path d="M60 -26L96 -72L112 -70L96 -24Z" fill="' + C.steel + '"/>'; // tail fin
+    g += '<path d="M-20 -8L-70 40L-44 40L4 -2Z" fill="' + C.steel + '"/>'; // wing
+    g += '<circle cx="-110" cy="-8" r="5" fill="#06101a"/><circle cx="-90" cy="-8" r="5" fill="#06101a"/><circle cx="-70" cy="-8" r="5" fill="#06101a"/>';
+    g += rimline("M-150 0Q-90 -26 60 -26L130 -18", "#ffb26b", 2);
+    return g + "</g>";
+  }
+  function bearing(x, y, r, glow) { // a bright bearing ring held to the light
+    var g = '<g transform="translate(' + x + " " + y + ')">';
+    g += '<circle r="' + r + '" fill="#cdd9e4" stroke="#8a97a3" stroke-width="3"/>';
+    g += '<circle r="' + (r * 0.55) + '" fill="#2a3139" stroke="#8a97a3" stroke-width="2"/>';
+    for (var i = 0; i < 10; i++) { var a = i * Math.PI / 5; g += '<circle cx="' + f1(Math.cos(a) * r * 0.78) + '" cy="' + f1(Math.sin(a) * r * 0.78) + '" r="' + f1(r * 0.12) + '" fill="#eef4fa"/>'; }
+    if (glow) g += '<circle r="' + (r + 10) + '" fill="#ffe9a0" opacity=".35"/>';
+    g += '<path d="M' + (-r * 0.5) + " " + (-r * 0.7) + "L" + (-r * 0.1) + " " + (-r * 0.3) + '" stroke="#fff" stroke-width="4" opacity=".8"/>';
+    return g + "</g>";
+  }
+  /* the President: a HINTING silhouette, not a portrait. Tall, heavy-set body, bold sweep of
+     light/blond hair as a simple shape, dark suit, long red tie. Feet at (x,y). */
+  function president(x, y, sc, look) {
+    look = look || 0;
+    var suit = "#141821", skin = "#c79a78";
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    // broad legs
+    g += '<path d="M-34 -2L-40 -118L-4 -118L-6 -2Z M6 -2L4 -118L40 -118L34 -2Z" fill="#0c0f15"/>';
+    g += '<path d="M-42 -2h40v10h-48zM4 -2h40l8 10h-48z" fill="#06080c"/>';
+    // heavy-set torso / dark suit
+    g += '<path d="M-56 -210L-30 -232L30 -232L56 -210L48 -108L-48 -108Z" fill="' + suit + '"/>';
+    g += rimline("M56 -210L48 -108", "#7a8a9a", 3);
+    // broad shoulders / arms to sides
+    g += '<path d="M-56 -210L-72 -130L-56 -112L-40 -118L-44 -196Z M56 -210L72 -130L56 -112L40 -118L44 -196Z" fill="' + suit + '"/>';
+    g += '<circle cx="-64" cy="-124" r="9" fill="' + skin + '"/><circle cx="64" cy="-124" r="9" fill="' + skin + '"/>';
+    // white shirt wedge and long red tie
+    g += '<path d="M-14 -232L0 -200L14 -232Z" fill="#f4f6f8"/>';
+    g += '<path d="M-6 -230L6 -230L9 -150L0 -138L-9 -150Z" fill="' + C.red + '"/>';
+    // neck + head (hinting, no detailed face)
+    g += '<path d="M-9 -238L-9 -224L9 -224L9 -238Z" fill="' + skin + '"/>';
+    g += '<ellipse cx="0" cy="-256" rx="20" ry="22" fill="' + skin + '"/>';
+    // bold clean graphic sweep of light/blond hair as a simple shape
+    g += '<path d="M-22 -258Q-24 -288 6 -288Q30 -288 24 -262Q24 -276 2 -276Q-10 -276 -14 -266L-20 -250Z" fill="#e8cf86"/>';
+    g += '<path d="M-20 -252Q-18 -262 -2 -262" stroke="#d8b85a" stroke-width="2" fill="none"/>';
+    if (look) g += '<circle cx="' + (look * 5) + '" cy="-256" r="1.8" fill="#10151b"/>';
+    return g + "</g>";
+  }
+  function sunrise(w, h, id) { // a hopeful sunrise gradient + sun glow
+    var s = '<defs><linearGradient id="su' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3b5c"/><stop offset=".4" stop-color="#e98f5a"/><stop offset=".7" stop-color="#ffc77a"/><stop offset="1" stop-color="#ffe6b0"/></linearGradient>' +
+      '<radialGradient id="sug' + id + '"><stop offset="0" stop-color="#fff3c9"/><stop offset=".4" stop-color="#ffc77a" stop-opacity=".8"/><stop offset="1" stop-color="#ffb26b" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#su' + id + ')"/>';
+    return s;
+  }
+
+  /* ----- Page 10: Start-Up Day ----- */
+  P.p10a = function (w, h) { // the ribbon-cutting; cameras, Krait slips away from the main drive
+    var r = rng(111), s = plantBg(w, h, r, 300), i;
+    for (i = 0; i < 3; i++) s += lathe(170 + i * 230, 300, 0.6, false);
+    s += flag(80, 70, 0.9) + flag(w - 150, 80, 0.9);
+    // ribbon across the machines
+    s += '<path d="M40 230Q400 190 760 230" stroke="' + C.red + '" stroke-width="10" fill="none"/>';
+    s += '<path d="M400 206l-22 -14 8 24 22 14Z" fill="' + C.red + '"/>'; // bow
+    // Hollis and workers / cameras gather (left)
+    s += man(150, 700, 1.9, { coat: "#7a2a2e", pants: "#1a1d22", skin: "#c9a085", hair: "#7a5a3a", long: true, look: 1, rim: "#ffb26b" });
+    s += crowd(r, 260, 540, 560, 1.1, ["#2a3a4a", "#3a2f26", "#2a3139"]);
+    // a camera on a tripod
+    s += '<g transform="translate(500 500)"><rect x="-28" y="0" width="56" height="30" fill="#0d1014" stroke="#8a97a3" stroke-width="2"/><circle cx="-34" cy="15" r="14" fill="#0d1014" stroke="#9fe0ff" stroke-width="2"/><path d="M-20 30L-30 110M20 30L30 110" stroke="#8a97a3" stroke-width="3"/></g>';
+    // Krait, disguised as a contractor (hard hat + vest), slipping toward an exit (far right)
+    s += '<rect x="' + (w - 90) + '" y="300" width="80" height="' + (h - 300) + '" fill="#0a0e13"/>'; // doorway
+    s += merc(w - 120, 720, 1.5, { flip: true, look: -1, coat: "#c8a24a", hat: "#d9a62a", hair: "#0d1014", pants: "#2a2f38", pose: "reach" });
+    return s;
+  };
+
+  P.p10b = function (w, h) { // Hollis reaches for the start button; Dan freezes
+    var r = rng(113), s = plantBg(w, h, r, 300);
+    s += controlPanel(470, 480, 1.5, false);
+    s += man(220, 700, 1.9, { coat: "#7a2a2e", pants: "#1a1d22", skin: "#c9a085", hair: "#7a5a3a", long: true, pose: "reach", look: 1, rim: "#ffb26b" });
+    // Dan tense, frozen, staring (hand up)
+    s += dan(640, 700, 1.95, "up", false, { flip: true, look: -1 });
+    return s;
+  };
+
+  P.p10c = function (w, h) { // Dan leaps; the shield catches a bursting pressure fitting, gears contain the burst
+    var r = rng(115), s = plantBg(w, h, r, 300), i;
+    s += '<defs><radialGradient id="p10c-b" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3c9" stop-opacity=".9"/><stop offset=".5" stop-color="#ffd9a0" stop-opacity=".5"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient></defs>';
+    // the main drive / pressure fitting that bursts
+    s += '<rect x="520" y="360" width="150" height="120" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="3"/><circle cx="560" cy="380" r="18" fill="#171c22" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    // the contained burst of amber-white / steam behind the shield
+    s += '<circle cx="470" cy="360" r="150" fill="url(#p10c-b)"/>';
+    for (i = 0; i < 16; i++) { var a = i / 16 * Math.PI * 2; s += '<path d="M470 360l' + f1(Math.cos(a) * (90 + r() * 40)) + ' ' + f1(Math.sin(a) * (90 + r() * 40)) + '" stroke="#fff3c9" stroke-width="' + (1.5 + r() * 2) + '" opacity=".7"/>'; }
+    for (i = 0; i < 10; i++) s += '<ellipse cx="' + f1(470 + (r() - 0.5) * 180) + '" cy="' + f1(340 + (r() - 0.5) * 140) + '" rx="' + f1(16 + r() * 18) + '" ry="' + f1(12 + r() * 12) + '" fill="#eef4fa" opacity="' + f1(0.25 + r() * 0.2) + '"/>';
+    // the shield active, catching the burst
+    s += shieldAt(470, 360, 0.6, "active");
+    // Dan mid-leap toward it
+    s += dan(180, 720, 1.95, "up", false, { rot: -14, look: 1 });
+    return s;
+  };
+
+  P.p10d = function (w, h) { // Dan chases Krait; workers block exits with forklifts, Krait cornered
+    var r = rng(117), s = plantBg(w, h, r, 300);
+    // exit blocked by forklifts
+    s += '<rect x="' + (w - 70) + '" y="200" width="70" height="' + (h - 200) + '" fill="#0a0e13"/>';
+    s += forklift(w - 120, 700, 1.2, true);
+    s += forklift(150, 720, 1.1, false);
+    // Krait cornered at the right
+    s += merc(w - 230, 700, 1.7, { flip: true, look: -1, coat: "#c8a24a", hat: null, hair: "#0d1014", pants: "#2a2f38", pose: "up" });
+    // Dan running (leaning forward, reach pose)
+    s += dan(360, 720, 2.0, "reach", false, { rot: 6, look: -1 });
+    return s;
+  };
+
+  /* ----- Page 11 ----- */
+  P.p11a = function (w, h) { // federal agents arrest Krait; his phone shows a Voss thread
+    var r = rng(121), s = plantBg(w, h, r, 300);
+    // agents in dark coats
+    s += man(180, 720, 2.0, { coat: "#1a2230", pants: "#0c0f15", hair: "#1a1410", collar: true, look: 1, rim: "#9fb6c8" });
+    s += man(610, 720, 2.0, { coat: "#1a2230", pants: "#0c0f15", hair: "#2a2622", collar: true, flip: true, look: -1, rim: "#9fb6c8" });
+    // Krait between them, hands down/behind
+    s += merc(400, 720, 1.9, { look: 0, hat: null, hair: "#0d1014", coat: "#2a2f38", pants: "#1a1d22" });
+    // the phone with the VOSS thread, held up
+    s += phone(400, 300, 1.0, "VOSS");
+    return s;
+  };
+
+  P.p11b = function (w, h) { // Voss arrested at a private airfield
+    var r = rng(123), s, i;
+    s = '<defs><linearGradient id="p11b-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a7490"/><stop offset="1" stop-color="#cfd9d0"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p11b-sky)"/>';
+    // tarmac + hangar silhouette
+    s += '<rect y="' + (h - 140) + '" width="' + w + '" height="140" fill="#3a3f48"/><path d="M0 ' + (h - 140) + 'H' + w + '" stroke="#ffb26b" stroke-width="2" opacity=".4"/>';
+    s += '<path d="M20 ' + (h - 140) + 'Q190 ' + (h - 260) + ' 360 ' + (h - 140) + 'Z" fill="#2a2f38" stroke="#8a97a3" stroke-width="2"/>'; // hangar
+    // the jet
+    s += jet(560, h - 170, 0.9);
+    // Voss (long gray hair as Page 3) and agents
+    s += man(300, h - 50, 2.0, { coat: "#2a2f38", pants: "#12151a", skin: "#d2ad92", hair: "#b7bcc2", long: true, look: -1, rim: "#9fb6c8" });
+    s += man(160, h - 50, 1.9, { coat: "#1a2230", pants: "#0c0f15", hair: "#1a1410", collar: true, look: 1, rim: "#9fb6c8" });
+    s += man(450, h - 50, 1.9, { coat: "#1a2230", pants: "#0c0f15", hair: "#2a2622", collar: true, flip: true, look: -1, rim: "#9fb6c8" });
+    return s;
+  };
+
+  P.p11c = function (w, h) { // Dan, calm, plant background
+    var r = rng(125), s = plantBg(w, h, r, 300), i;
+    for (i = 0; i < 3; i++) s += lathe(190 + i * 220, 320, 0.6, false);
+    s += dan(380, 760, 2.4, "stand", false, { look: 0 });
+    return s;
+  };
+
+  P.p11d = function (w, h) { // Hollis presses the button; the line roars to life
+    var r = rng(127), s = plantBg(w, h, r, 340), i;
+    // a row of running lathes with bright rim light and motion
+    for (i = 0; i < 4; i++) s += lathe(140 + i * 180, 430, 0.62, true);
+    s += '<path d="M40 310H' + (w - 40) + '" stroke="#ffe9a0" stroke-width="3" opacity=".6"/>';
+    for (i = 0; i < 4; i++) s += '<rect x="' + (80 + i * 180) + '" y="368" width="120" height="4" fill="#dfe8f2" opacity=".8"/>';
+    // motion streaks
+    for (i = 0; i < 10; i++) s += '<path d="M' + f1(60 + r() * (w - 120)) + ' ' + f1(360 + r() * 120) + 'h' + (30 + r() * 50) + '" stroke="#9fe0ff" stroke-width="2" opacity=".4"/>';
+    // Hollis pressing the lit button
+    s += controlPanel(640, 560, 1.3, true);
+    s += man(210, 780, 2.0, { coat: "#7a2a2e", pants: "#1a1d22", skin: "#c9a085", hair: "#7a5a3a", long: true, pose: "reach", flip: true, look: -1, rim: "#ffb26b" });
+    return s;
+  };
+
+  /* ----- Page 12 ----- */
+  P.p12a = function (w, h) { // first bearing rolls off the line; Walt holds it to the light
+    var r = rng(131), s = plantBg(w, h, r, 300);
+    s += lathe(540, 360, 0.8, true);
+    // bright amber-white light from above
+    s += '<defs><radialGradient id="p12a-g" cx=".4" cy=".2" r=".6"><stop offset="0" stop-color="#ffe9a0" stop-opacity=".6"/><stop offset="1" stop-color="#ffe9a0" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p12a-g)"/>';
+    s += man(240, 760, 2.3, { coat: "#6a3a2a", pants: "#2a2f38", skin: "#c19a7b", hair: "#cfd5da", pose: "up", look: 0, rim: "#ffb26b" });
+    // the bright bearing held up to the light
+    s += bearing(252, 300, 46, true);
+    return s;
+  };
+
+  P.p12b = function (w, h) { // the President returns for the opening, public, on camera
+    var r = rng(133), s = plantBg(w, h, r, 360), i;
+    for (i = 0; i < 3; i++) s += lathe(170 + i * 230, 360, 0.5, false);
+    s += flag(130, 90, 1.2) + flag(230, 110, 1.1) + flag(w - 330, 110, 1.1) + flag(w - 230, 90, 1.2);
+    s += '<path d="M0 70Q200 120 388 80T776 70" stroke="' + C.red + '" stroke-width="5" fill="none"/><path d="M0 80Q200 130 388 90T776 80" stroke="#f4f6f8" stroke-width="5" fill="none"/>';
+    // the President, hinting silhouette, at the podium
+    s += president(388, 500, 1.1, 0);
+    s += podium(388, 400, 150, 110);
+    // cameras + crowd
+    s += crowd(r, 10, w, 540, 1.5, ["#10151b", "#161c24", "#1c232c"]);
+    s += '<g transform="translate(690 360)"><rect x="-28" y="0" width="56" height="26" fill="#0d1014" stroke="#8a97a3" stroke-width="2"/><circle cx="-34" cy="13" r="14" fill="#0d1014" stroke="#9fe0ff" stroke-width="2"/><path d="M-20 26L-30 90M20 26L30 90" stroke="#8a97a3" stroke-width="3"/></g>';
+    return s;
+  };
+
+  P.p12c = function (w, h) { // the President speaks privately with Dan, quieter interior
+    var r = rng(135), s;
+    s = '<defs><linearGradient id="p12c-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#20262f"/><stop offset="1" stop-color="#363d47"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p12c-bg)"/>';
+    s += '<rect y="' + (h - 90) + '" width="' + w + '" height="90" fill="#2a3038"/><path d="M0 ' + (h - 90) + 'H' + w + '" stroke="#ffb26b" stroke-width="2" opacity=".4"/>';
+    // a quiet window/light behind
+    s += '<rect x="520" y="40" width="200" height="150" fill="#3a4654" stroke="#8a97a3" stroke-width="3"/><path d="M620 40V190M520 115H720" stroke="#2a323b" stroke-width="4"/>';
+    // the President silhouette beside Dan
+    s += president(250, h - 70, 1.05, 1);
+    s += dan(540, h - 70, 2.0, "stand", false, { flip: true, look: -1 });
+    return s;
+  };
+
+  P.p12d = function (w, h) { // Dan nods, close, affirming
+    var r = rng(137), s = plantBg(w, h, r, 300), i;
+    for (i = 0; i < 2; i++) s += lathe(220 + i * 300, 320, 0.5, false);
+    // close on Dan, head tipped (slight rotation), affirming
+    s += dan(400, 800, 2.7, "stand", false, { rot: 4, look: 0 });
+    return s;
+  };
+
+  /* ----- Page 13: Closing Splash (full page) ----- */
+  P.p13 = function (w, h) {
+    var r = rng(139), s, i;
+    s = sunrise(w, h, 139);
+    s += '<circle cx="' + f1(w * 0.72) + '" cy="' + f1(h * 0.3) + '" r="300" fill="url(#sug139)"/><circle cx="' + f1(w * 0.72) + '" cy="' + f1(h * 0.3) + '" r="54" fill="#fff3c9"/>';
+    // distant factories with smoke rising from the stacks
+    for (i = 0; i < 7; i++) s += factory(i * 118 - 20, h * 0.58, 110, 90 + r() * 50, "#3b414d", r, 2);
+    // smoke plumes
+    for (i = 0; i < 5; i++) { var sx = 80 + i * 150; s += '<path d="M' + sx + ' ' + (h * 0.42) + 'q-30 -60 10 -120q40 -50 0 -110" stroke="#cdd4dc" stroke-width="' + (10 + r() * 8) + '" fill="none" opacity=".4"/>'; }
+    // the plant roof Dan stands on (foreground band)
+    s += '<rect y="' + (h * 0.62) + '" width="' + w + '" height="' + (h * 0.14) + '" fill="#2a3139"/><path d="M0 ' + (h * 0.62) + 'H' + w + '" stroke="#ffd7a0" stroke-width="3" opacity=".7"/>';
+    // the gate + ground below, trucks rolling out, workers flooding in
+    s += '<rect y="' + (h * 0.76) + '" width="' + w + '" height="' + (h * 0.24) + '" fill="#1b2026"/>';
+    s += '<rect x="120" y="' + (h * 0.72) + '" width="30" height="' + (h * 0.1) + '" fill="#3a2418" stroke="' + C.rust2 + '" stroke-width="2"/><rect x="650" y="' + (h * 0.72) + '" width="30" height="' + (h * 0.1) + '" fill="#3a2418" stroke="' + C.rust2 + '" stroke-width="2"/>';
+    // trucks marked MADE IN USA rolling out the gate
+    s += '<g transform="translate(260 ' + (h * 0.9) + ')">' + truckFront(0, 0, 1.3, 0) + '<rect x="-56" y="12" width="112" height="24" fill="#f4f6f8" stroke="#0d1014" stroke-width="2"/><text x="0" y="30" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="16" letter-spacing="1" fill="#1c3f8f">MADE IN USA</text></g>';
+    s += '<g transform="translate(540 ' + (h * 0.94) + ')">' + truckFront(0, 0, 1.0, 0) + '<rect x="-50" y="10" width="100" height="20" fill="#f4f6f8" stroke="#0d1014" stroke-width="2"/><text x="0" y="26" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="13" letter-spacing="1" fill="#1c3f8f">MADE IN USA</text></g>';
+    // workers flooding in
+    s += crowd(r, 20, w - 20, h * 0.99, 1.0, ["#2a3a4a", "#3a2f26", "#2a3139", "#2a4a6a"]);
+    // Dan on the roof, shield on his back, at sunrise
+    s += '<g transform="translate(400 ' + (h * 0.62) + ')">';
+    s += shieldAt(-46, -176, 0.26, "dormant"); // shield on his back (behind)
+    s += '<path d="M-72 -210L-20 -170M-72 -140L-20 -170" stroke="' + C.denim + '" stroke-width="8"/>'; // straps
+    s += dan(0, 0, 2.3, "stand", false, { look: 1, rim: "#ffd7a0" });
+    s += '</g>';
+    return s;
+  };
+
+  /* ----- Post-Credits Tease: Meridian Pacific boardroom; Shao watches the line start ----- */
+  P.pct = function (w, h) {
+    var r = rng(141), s, i;
+    s = '<defs><linearGradient id="pct-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#1c2a36"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#pct-bg)"/>';
+    // the big screen showing footage of a running line
+    s += '<rect x="170" y="24" width="460" height="200" fill="#06121c" stroke="#8a97a3" stroke-width="3"/><rect x="178" y="32" width="444" height="184" fill="#0f2a3a"/>';
+    s += '<g transform="translate(178 32)">';
+    for (i = 0; i < 4; i++) s += lathe(80 + i * 112, 150, 0.4, true);
+    s += '<path d="M20 90H424" stroke="#6fd3ff" stroke-width="2" opacity=".6"/>';
+    s += '</g>';
+    s += '<rect x="170" y="24" width="460" height="200" fill="#6fd3ff" opacity=".06"/>';
+    // screen label
+    s += '<text x="400" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="2" fill="#dff3ff">ASHFORD \u2014 LIVE</text>';
+    // boardroom table + silhouettes like p3a
+    s += '<path d="M60 ' + (h - 80) + 'L716 ' + (h - 80) + 'L760 ' + (h - 30) + 'L16 ' + (h - 30) + 'Z" fill="#2a3139" stroke="#6fd3ff" stroke-opacity=".5" stroke-width="2"/>';
+    for (i = 0; i < 5; i++) s += '<g transform="translate(' + (120 + i * 140) + ' ' + (h - 82) + ')"><path d="M-26 0Q-26 -34 0 -38Q26 -34 26 0Z" fill="#0c1218" stroke="#6fd3ff" stroke-opacity=".4" stroke-width="1.5"/><circle cy="-48" r="13" fill="#0c1218" stroke="#6fd3ff" stroke-opacity=".4" stroke-width="1.5"/></g>';
+    // Shao (suitMan) watching, lit by the screen
+    s += suitMan(400, h - 70, 1.9, { coat: "#2f3a46", skin: "#c9a98a", hair: "#2a2a30", look: 0, rim: "#6fd3ff" });
+    return s;
+  };
+
   window.GH = { C: C, shield: shield, shieldAt: shieldAt, panels: P, gearPath: gearPath };
   if (typeof module !== "undefined") module.exports = window.GH;
 })();
