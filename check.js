@@ -7,7 +7,7 @@ var dir = fs.mkdtempSync(path.join(os.tmpdir(), "gh-"));
 var appSrc = fs.readFileSync(path.join(__dirname, "js", "app.js"), "utf-8");
 var rects = {}, m, re = /rect: \[(\d+), (\d+), (\d+), (\d+)\], art: "(\w+)"/g;
 while ((m = re.exec(appSrc))) rects[m[5]] = [+m[3], +m[4]];
-var expected = ["prologue", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p3a", "p3b", "p3c", "p3d", "p7a", "p7b", "p7c", "p7d", "p7e", "p7f"];
+var expected = ["prologue", "p1a", "p1b", "p1c", "p2a", "p2b", "p2c", "p2d", "p3a", "p3b", "p3c", "p3d", "p4a", "p4b", "p4c", "p4d", "p5a", "p5b", "p5c", "p5d", "p6a", "p6b", "p6c", "p6d", "p7a", "p7b", "p7c", "p7d", "p7e", "p7f", "p8a", "p8b", "p8c", "p8d", "p9a", "p9b", "p9c", "p9d"];
 expected.forEach(function (k) { if (!rects[k]) { console.error("MISSING panel in app.js PAGES:", k); process.exit(1); } if (!G.panels[k]) { console.error("MISSING art for", k); process.exit(1); } });
 Object.keys(rects).forEach(function (k) { if (expected.indexOf(k) < 0) { console.error("UNEXPECTED panel:", k); process.exit(1); } });
 var p7d = rects.p7d; if (p7d[0] < 776) { console.error("p7d must be splash-width"); process.exit(1); }

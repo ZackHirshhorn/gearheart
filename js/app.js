@@ -47,6 +47,39 @@
       { rect: [12, 716, 776, 372], art: "p3d", ov: [
         { t: "cap", pos: "tl", style: "max-width:30%", text: "Shao slides over a file marked HOLLIS / ASHFORD." },
         { t: "bubble", pos: "tr", style: "right:2%;top:3%;max-width:31%;--tx:30%", who: "SHAO", text: "The President's program rests on the first plants succeeding. Make this one fail." }] }] },
+    { label: "Page 4", panels: [
+      { rect: [12, 12, 776, 360], art: "p4a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "Night. Dan and Walt restart the plant's old rolling mill for the first time in twenty years." },
+        { t: "sfx big", pos: "tr", style: "font-size:5cqw;top:6%;right:6%", text: "KRAK" }] },
+      { rect: [12, 384, 380, 320], art: "p4b", ov: [
+        { t: "cap", pos: "bl", style: "max-width:62%", text: "Dan grabs the live drive housing to wrench it away. A surge of current arcs through him." },
+        { t: "sfx big", pos: "tr", style: "font-size:4.4cqw;top:3%;right:4%", text: "KZZZRRRAAAK" }] },
+      { rect: [404, 384, 384, 320], art: "p4c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:52%", text: "Later, in the hospital, Dan wakes up. A heart monitor beeps beside him. He turns his head toward it." },
+        { t: "cap dan", pos: "bl", style: "max-width:70%", who: "DAN", text: "I could hear it. Not the beep. The machine. Its transformer was humming a little off." }] },
+      { rect: [12, 716, 776, 372], art: "p4d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:36%", text: "Back on the plant floor, Dan touches a seized press, and it frees up and runs true." },
+        { t: "cap", pos: "br", style: "max-width:54%", text: "Whatever happened that night, machines talk to me now. Where they're worn. Where they're out of true. Where they need to go." }] }] },
+    { label: "Page 5", panels: [
+      { rect: [12, 12, 776, 300], art: "p5a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "Dan walks an empty bay with chalk, marking the floor without measuring." },
+        { t: "cap dan", pos: "br", style: "max-width:44%", who: "DAN", text: "I see a whole line before it's built." }] },
+      { rect: [12, 324, 380, 380], art: "p5b", ov: [
+        { t: "cap dan", pos: "bl", style: "max-width:60%", who: "DAN", text: "I make old machines run like new." }] },
+      { rect: [404, 324, 384, 380], art: "p5c", ov: [
+        { t: "cap dan", pos: "bl", style: "max-width:62%", who: "DAN", text: "And I can teach it. That matters most. A factory is people." }] },
+      { rect: [12, 716, 776, 372], art: "p5d", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:4%;max-width:44%;--tx:55%", who: "WALT", text: "Your dad would want you to have this back. Looks like you'll need it." }] }] },
+    { label: "Page 6", panels: [
+      { rect: [12, 12, 776, 360], art: "p6a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "The Port of Baltimore. Hollis's sixty machines arrive in crates, then load onto a freight train bound for Ohio." }] },
+      { rect: [12, 384, 380, 320], art: "p6b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:58%", text: "Dan rides the train, with the shield strapped to his back and a hard hat on." }] },
+      { rect: [404, 384, 384, 320], art: "p6c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:60%;font-size:1.6cqw", text: "Night in the mountains of West Virginia. Trucks with no lights pull alongside the tracks. Mercenaries led by KRAIT raise their rifles." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:5%;max-width:60%;--tx:30%;font-size:1.7cqw", who: "KRAIT", text: "Hit the flatcars. Wreck the machines. No line, no factory." }] },
+      { rect: [12, 716, 776, 372], art: "p6d", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:40%;--tx:40%", who: "DAN", text: "Those are two hundred jobs. You don't touch them." }] }] },
     { label: "Page 7", note: COMING, panels: [
       { rect: [12, 12, 300, 260], art: "p7a", ov: [
         { t: "cap", pos: "tl", style: "max-width:92%;font-size:1.5cqw", text: "Night, the West Virginia mountains. Krait's mercenaries, in trucks running without lights, open fire on the freight train." }] },
@@ -65,7 +98,25 @@
         { t: "cap dan", pos: "tr", style: "max-width:62%;font-size:1.5cqw;top:6%", who: "DAN", text: "Every machine has a drive. This one's mine." }] },
       { rect: [284, 928, 504, 160], art: "p7f", ov: [
         { t: "sfx big", pos: "tr", style: "font-size:6cqw;top:4%;right:5%", text: "KRA-THOOM" },
-        { t: "cap", pos: "bl", style: "max-width:44%;font-size:1.5cqw", text: "Krait, dazed in the dirt, slams his hand down on a detonator." }] }] }
+        { t: "cap", pos: "bl", style: "max-width:44%;font-size:1.5cqw", text: "Krait, dazed in the dirt, slams his hand down on a detonator." }] }] },
+    { label: "Page 8", panels: [
+      { rect: [12, 12, 776, 360], art: "p8a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "The train jumps the track. Crates spill down the embankment." }] },
+      { rect: [12, 384, 380, 320], art: "p8b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:60%", text: "Morning. Dan stands among the wreckage. Machines lie broken, scattered across the hillside." }] },
+      { rect: [404, 384, 384, 320], art: "p8c", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:64%;--tx:40%;font-size:1.6cqw", who: "HOLLIS", text: "That's it. The insurance alone will take months. The program's first plant, and it's dead on a hillside." }] },
+      { rect: [12, 716, 776, 372], art: "p8d", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:46%;--tx:35%", who: "DAN", text: "No. They're hurt, not dead. I can hear every one of them." }] }] },
+    { label: "Page 9", panels: [
+      { rect: [12, 12, 776, 300], art: "p9a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "Montage. Ashford workers drive down with flatbeds and cranes to haul the machines home." }] },
+      { rect: [12, 324, 380, 380], art: "p9b", ov: [
+        { t: "cap dan", pos: "tl", style: "max-width:66%", who: "DAN", text: "Some parts we machined ourselves. Some came from shops in Michigan, Indiana, and Pennsylvania that were still hanging on." }] },
+      { rect: [404, 324, 384, 380], art: "p9c", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:56%;--tx:45%", who: "WALT", text: "Your granddads did this. Now it's your turn." }] },
+      { rect: [12, 716, 776, 372], art: "p9d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "A calendar on the wall: DAY 87. The line is complete and gleaming." }] }] }
   ];
 
   var stage = document.getElementById("stage");

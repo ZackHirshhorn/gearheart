@@ -542,6 +542,368 @@
     return s;
   };
 
+  /* ----- shared machine shapes for Pages 4,5,9 ----- */
+  function press(x, y, sc, glow) { // a simple vertical press/machine body
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-70" y="-180" width="140" height="40" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-54" y="-140" width="30" height="120" fill="' + C.steel + '"/><rect x="24" y="-140" width="30" height="120" fill="' + C.steel + '"/>';
+    g += '<rect x="-46" y="-110" width="92" height="36" fill="' + C.steel3 + '" stroke="' + C.ink + '" stroke-width="2"/>';
+    g += '<rect x="-88" y="-20" width="176" height="24" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-46" y="-168" width="12" height="26" fill="' + C.rust2 + '"/>';
+    g += rimline("M70 -180L88 -20", "#ffb26b", 3);
+    if (glow) g += '<rect x="-46" y="-110" width="92" height="36" fill="#ffd9a0" opacity=".55"/><path d="M-46 -92H46" stroke="#ffe9a0" stroke-width="3"/>';
+    return g + "</g>";
+  }
+  function rollingMill(x, y, sc) { // horizontal rolling mill with two rolls and a drive coupling
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-150" y="-30" width="300" height="30" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-120" y="-120" width="40" height="92" fill="' + C.steel2 + '"/><rect x="60" y="-120" width="40" height="92" fill="' + C.steel2 + '"/>';
+    g += '<circle cx="-100" cy="-74" r="34" fill="#171c22" stroke="' + C.steel3 + '" stroke-width="4"/><circle cx="80" cy="-74" r="34" fill="#171c22" stroke="' + C.steel3 + '" stroke-width="4"/>';
+    g += '<circle cx="-100" cy="-74" r="12" fill="' + C.steel3 + '"/><circle cx="80" cy="-74" r="12" fill="' + C.steel3 + '"/>';
+    g += rimline("M-150 -30L150 -30", "#ffb26b", 2);
+    return g + "</g>";
+  }
+  function heartMonitor(x, y, sc) {
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-56" y="-120" width="112" height="86" rx="6" fill="#10151b" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    g += '<rect x="-48" y="-112" width="96" height="70" fill="#06141a"/>';
+    g += '<path d="M-44 -78H-18L-10 -100L-2 -58L8 -86L16 -78H44" fill="none" stroke="#6fd3ff" stroke-width="3"/>';
+    g += '<rect x="-8" y="-34" width="16" height="34" fill="' + C.steel2 + '"/><rect x="-28" y="0" width="56" height="8" fill="' + C.steel + '"/>';
+    g += '<circle cx="34" cy="-106" r="3" fill="#7dff9a"/>';
+    return g + "</g>";
+  }
+  function grinder(x, y, sc, glow) {
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-60" y="-14" width="120" height="60" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-40" y="-60" width="80" height="48" fill="' + C.steel2 + '"/>';
+    g += '<circle cx="-30" cy="-36" r="22" fill="#2a3139" stroke="' + C.steel3 + '" stroke-width="3"/><circle cx="-30" cy="-36" r="6" fill="' + C.steel3 + '"/>';
+    g += '<circle cx="32" cy="-36" r="22" fill="#2a3139" stroke="' + C.steel3 + '" stroke-width="3"/><circle cx="32" cy="-36" r="6" fill="' + C.steel3 + '"/>';
+    if (glow) g += '<circle cx="-30" cy="-36" r="22" fill="#ffd9a0" opacity=".4"/><circle cx="32" cy="-36" r="22" fill="#ffd9a0" opacity=".4"/>';
+    return g + "</g>";
+  }
+  function crane(x, base, sc) {
+    var g = '<g transform="translate(' + x + " " + base + ") scale(" + sc + ')">';
+    g += '<rect x="-10" y="-320" width="20" height="320" fill="' + C.steel2 + '"/>';
+    g += '<path d="M-10 -320H220L220 -300H-10Z" fill="' + C.steel + '"/>';
+    g += '<path d="M-10 -300L-140 -300" stroke="' + C.steel2 + '" stroke-width="14"/>';
+    g += '<path d="M-10 -320L-10 0M10 -320L10 0M-10 -260L10 -220M10 -260L-10 -220" stroke="' + C.ink + '" stroke-width="3" opacity=".5"/>';
+    g += '<path d="M180 -300V-240" stroke="' + C.ink + '" stroke-width="3"/><rect x="164" y="-240" width="32" height="24" fill="' + C.rust2 + '"/>';
+    g += rimline("M-10 -320H220", "#ffb26b", 2);
+    return g + "</g>";
+  }
+  function flatbed(x, y, sc) {
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-150" y="-30" width="300" height="20" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="2"/>';
+    g += '<rect x="90" y="-78" width="70" height="48" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="2"/><rect x="96" y="-72" width="40" height="22" fill="#06101a"/>';
+    g += '<circle cx="-100" cy="-6" r="16" fill="#05080f" stroke="' + C.steel3 + '" stroke-width="3"/><circle cx="-40" cy="-6" r="16" fill="#05080f" stroke="' + C.steel3 + '" stroke-width="3"/><circle cx="110" cy="-6" r="16" fill="#05080f" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    g += rimline("M-150 -30H160", "#ffb26b", 2);
+    return g + "</g>";
+  }
+  function calendar(x, y, sc, label) {
+    var g = '<g transform="translate(' + x + " " + y + ") scale(" + sc + ')">';
+    g += '<rect x="-70" y="-90" width="140" height="150" rx="6" fill="' + C.white + '" stroke="' + C.ink + '" stroke-width="3"/>';
+    g += '<rect x="-70" y="-90" width="140" height="40" fill="' + C.red + '"/>';
+    g += '<rect x="-48" y="-100" width="10" height="24" rx="4" fill="' + C.steel3 + '"/><rect x="38" y="-100" width="10" height="24" rx="4" fill="' + C.steel3 + '"/>';
+    g += '<text x="0" y="-60" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="' + C.white + '">MONTH 3</text>';
+    g += '<text x="0" y="30" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="46" letter-spacing="1" fill="' + C.ink + '">' + label + '</text>';
+    return g + "</g>";
+  }
+
+  /* ----- Page 4: The Gift ----- */
+  P.p4a = function (w, h) { // night, Dan and Walt restart the old rolling mill; a coupling cracks, a shaft whips loose
+    var r = rng(61), s = plantBg(w, h, r, 300), i;
+    s += '<rect width="' + w + '" height="' + h + '" fill="#0a1018" opacity=".55"/>';
+    s += rollingMill(300, 300, 1.0);
+    // drive coupling (cracked) and loose shaft whipping toward Walt (right)
+    s += '<g transform="translate(410 226)"><circle r="26" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="3"/><path d="M-6 -24L2 0L-4 24" stroke="' + C.rust + '" stroke-width="4" fill="none"/></g>';
+    s += '<path d="M436 226L560 196" stroke="' + C.steel3 + '" stroke-width="14" stroke-linecap="round"/><path d="M436 226L560 196" stroke="' + C.rust + '" stroke-width="3" fill="none"/>';
+    for (i = 0; i < 7; i++) s += '<path d="M' + (420 + r() * 30) + " " + (210 + r() * 20) + "l" + (6 + r() * 10) + " " + (-6 - r() * 8) + '" stroke="' + C.rust + '" stroke-width="2"/>';
+    s += dan(180, 640, 1.9, "reach", false, { look: 1 });
+    s += man(600, 640, 1.9, { coat: "#6a3a2a", pants: "#2a2f38", skin: "#c19a7b", hair: "#cfd5da", pose: "up", look: -1, rim: "#ffb26b" });
+    return s;
+  };
+
+  P.p4b = function (w, h) { // Dan grabs the live drive housing; a current surge arcs through him
+    var r = rng(63), s = plantBg(w, h, r, 300), i;
+    s += '<rect width="' + w + '" height="' + h + '" fill="#0a1018" opacity=".5"/>';
+    s += '<defs><radialGradient id="p4b-g" cx=".42" cy=".4" r=".6"><stop offset="0" stop-color="#ffe9a0" stop-opacity=".7"/><stop offset=".5" stop-color="#9fd8ff" stop-opacity=".3"/><stop offset="1" stop-color="#9fd8ff" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p4b-g)"/>';
+    s += press(300, 440, 1.0, false);
+    // drive housing Dan grabs
+    s += '<rect x="250" y="260" width="110" height="80" fill="' + C.steel2 + '" stroke="' + C.ink + '" stroke-width="3"/><rect x="262" y="272" width="86" height="56" fill="#171c22"/>';
+    // electric arc through him (amber-white / blue, no gore)
+    for (i = 0; i < 9; i++) {
+      var ax = 320 + i * 0, a0 = 300, step = 30;
+      s += '<path d="M' + (300 + (r() - 0.5) * 20) + ' 300L' + (300 + (r() - 0.5) * 40) + " 360L" + (300 + (r() - 0.5) * 40) + " 420L" + (300 + (r() - 0.5) * 30) + ' 480" stroke="' + (i % 2 ? "#ffe9a0" : "#bfe6ff") + '" stroke-width="' + (1 + r() * 2) + '" fill="none" opacity=".85"/>';
+    }
+    for (i = 0; i < 10; i++) s += flash(260 + r() * 120, 280 + r() * 200, 0.7 + r() * 0.6);
+    s += dan(320, 700, 2.1, "up", false, { look: 0 });
+    return s;
+  };
+
+  P.p4c = function (w, h) { // hospital, Dan wakes, a heart monitor beside him, he turns his head toward it
+    var r = rng(65), s = "", i;
+    s += '<defs><linearGradient id="p4c-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3a46"/><stop offset="1" stop-color="#46525c"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p4c-bg)"/>';
+    s += '<rect y="' + (h - 90) + '" width="' + w + '" height="90" fill="#36414b"/><path d="M0 ' + (h - 90) + 'H' + w + '" stroke="#ffb26b" stroke-width="2" opacity=".4"/>';
+    // bed
+    s += '<rect x="30" y="' + (h - 150) + '" width="' + (w - 60) + '" height="40" rx="10" fill="#dfe8f2"/><rect x="30" y="' + (h - 130) + '" width="' + (w - 60) + '" height="30" fill="#b9c6d2"/>';
+    s += '<rect x="20" y="' + (h - 230) + '" width="20" height="120" fill="' + C.steel2 + '"/>'; // headboard
+    // pillow + Dan's head turned toward the monitor
+    s += '<ellipse cx="110" cy="' + (h - 158) + '" rx="60" ry="26" fill="#f4f6f8"/>';
+    s += '<g transform="translate(150 ' + (h - 168) + ') rotate(26)"><circle r="20" fill="#a97c5b" stroke="' + C.rust + '" stroke-width="2"/><path d="M-20 -6Q-20 -24 0 -24Q20 -24 20 -6Q10 -16 0 -16Q-10 -16 -20 -6Z" fill="#1a1410"/><circle cx="6" cy="-2" r="2" fill="#10151b"/></g>';
+    s += '<rect x="130" y="' + (h - 150) + '" width="' + (w - 200) + '" height="26" rx="12" fill="#cdd9e4"/>'; // blanket
+    // monitor on a stand to the right
+    s += '<rect x="' + (w - 120) + '" y="' + (h - 250) + '" width="10" height="150" fill="' + C.steel2 + '"/>';
+    s += heartMonitor(w - 115, h - 250, 1.0);
+    s += '<path d="M' + (w - 150) + ' ' + (h - 190) + 'Q' + (w - 230) + ' ' + (h - 180) + ' ' + (w - 300) + ' ' + (h - 160) + '" stroke="#6fd3ff" stroke-width="3" fill="none" opacity=".7"/>';
+    return s;
+  };
+
+  P.p4d = function (w, h) { // plant floor, Dan touches a seized press and it frees up and runs true
+    var r = rng(67), s = plantBg(w, h, r, 300);
+    s += '<defs><radialGradient id="p4d-g" cx=".55" cy=".45" r=".5"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient></defs>';
+    s += press(470, 500, 1.15, true);
+    s += '<circle cx="470" cy="400" r="150" fill="url(#p4d-g)"/>';
+    s += dan(220, 640, 2.0, "touch", false, { look: 1 });
+    s += '<path d="M430 420L470 416" stroke="#ffe9a0" stroke-width="3"/>';
+    return s;
+  };
+
+  /* ----- Page 5: What He Can Do ----- */
+  P.p5a = function (w, h) { // Dan walks an empty bay with chalk; ghosted overlay of a complete line
+    var r = rng(71), s = plantBg(w, h, r, 300), i;
+    // ghosted (faint) line of machines to suggest the planned layout
+    s += '<g opacity=".22">';
+    for (i = 0; i < 4; i++) s += lathe(150 + i * 170, 300, 0.55, false);
+    s += '</g>';
+    // chalk marks on the floor
+    for (i = 0; i < 5; i++) s += '<path d="M' + (120 + i * 150) + ' ' + (h - 90) + 'h70M' + (120 + i * 150) + ' ' + (h - 120) + 'v60" stroke="#dfe8f2" stroke-width="2" stroke-dasharray="8 6" opacity=".7"/>';
+    s += '<path d="M60 ' + (h - 60) + 'Q400 ' + (h - 40) + ' 740 ' + (h - 70) + '" stroke="#dfe8f2" stroke-width="2" stroke-dasharray="10 8" opacity=".6" fill="none"/>';
+    s += dan(260, 700, 2.0, "point", false, { look: 1 });
+    s += '<circle cx="360" cy="520" r="5" fill="#dfe8f2"/>'; // chalk in hand
+    return s;
+  };
+
+  P.p5b = function (w, h) { // hand on a worn grinder that hums smoothly; a tolerance readout +/- 0.0001
+    var r = rng(73), s = plantBg(w, h, r, 300);
+    s += grinder(360, 430, 1.9, true);
+    // Dan's hand on it
+    s += '<path d="M150 540L300 470" stroke="' + C.denim + '" stroke-width="26" stroke-linecap="round"/><circle cx="310" cy="466" r="16" fill="#a97c5b"/>';
+    s += dan(120, 720, 2.0, "reach", false, { look: 1 });
+    // tolerance readout panel
+    s += '<g transform="translate(560 150)"><rect x="-96" y="-44" width="192" height="88" rx="8" fill="#10151b" stroke="' + C.steel3 + '" stroke-width="3"/><rect x="-88" y="-36" width="176" height="72" fill="#06141a"/>';
+    s += '<text x="0" y="-6" text-anchor="middle" font-family="Consolas,monospace" font-size="18" fill="#7dff9a">TOLERANCE</text>';
+    s += '<text x="0" y="26" text-anchor="middle" font-family="Consolas,monospace" font-weight="700" font-size="26" fill="#6fd3ff">+/- 0.0001</text></g>';
+    return s;
+  };
+
+  P.p5c = function (w, h) { // Dan teaching a dozen new hires around a machine, hand over a trainee's
+    var r = rng(75), s = plantBg(w, h, r, 300);
+    s += lathe(400, 360, 1.0, false);
+    s += crowd(r, 40, 300, 560, 1.2, ["#2a3a4a", "#3a2f26", "#2a3139"]);
+    s += crowd(r, 520, w - 20, 560, 1.2, ["#2a3a4a", "#3a2f26", "#2a3139"]);
+    // a trainee at the machine, Dan's hand over theirs
+    s += man(430, 700, 1.7, { coat: "#6a5a3a", pants: "#22282f", skin: "#c19a7b", hair: "#2a2622", pose: "reach", look: -1, rim: "#ffb26b" });
+    s += dan(250, 720, 1.9, "reach", false, { look: 1 });
+    return s;
+  };
+
+  P.p5d = function (w, h) { // Walt hands Dan the shield from over the tool crib
+    var r = rng(79), s = plantBg(w, h, r, 300), i;
+    // tool crib / shelving behind
+    s += '<g opacity=".9">';
+    for (i = 0; i < 4; i++) s += '<rect x="80" y="' + (120 + i * 70) + '" width="640" height="10" fill="' + C.steel2 + '"/>';
+    for (i = 0; i < 10; i++) s += '<rect x="' + (100 + i * 62) + '" y="' + (134 + (i % 3) * 70) + '" width="40" height="30" fill="' + (i % 2 ? C.steel : C.steel3) + '" opacity=".8"/>';
+    s += '</g>';
+    s += man(170, 720, 1.95, { coat: "#6a3a2a", pants: "#2a2f38", skin: "#c19a7b", hair: "#cfd5da", pose: "reach", look: 1, rim: "#ffb26b" });
+    s += dan(620, 720, 1.95, "reach", false, { flip: true, look: -1 });
+    // the shield being passed (small scale, between them)
+    s += shieldAt(400, 400, 0.28, "dormant");
+    return s;
+  };
+
+  /* ----- Page 6: The Convoy ----- */
+  P.p6a = function (w, h) { // Port of Baltimore, sixty crates loading onto a freight train
+    var r = rng(81), s, i;
+    s = '<defs><linearGradient id="p6a-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a5570"/><stop offset="1" stop-color="#9fb6c8"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p6a-sky)"/>';
+    // dock water
+    s += '<rect y="' + (h * 0.62) + '" width="' + w + '" height="' + (h * 0.38) + '" fill="#2a4a5a"/>';
+    for (i = 0; i < 10; i++) s += '<path d="M' + f1(r() * w) + ' ' + f1(h * 0.64 + r() * h * 0.3) + 'h' + (20 + r() * 40) + '" stroke="#6f93a8" stroke-width="2" opacity=".5"/>';
+    // dock deck
+    s += '<rect y="' + (h * 0.46) + '" width="' + w + '" height="' + (h * 0.18) + '" fill="#4a5560"/><path d="M0 ' + (h * 0.46) + 'H' + w + '" stroke="#ffb26b" stroke-width="2" opacity=".4"/>';
+    // gantry crane
+    s += crane(120, h * 0.46, 0.9);
+    // crate stacks
+    for (i = 0; i < 7; i++) s += crate(90 + i * 90, h * 0.46, 72, 56, i % 2 ? "#4a3a2a" : "#3a3126");
+    for (i = 0; i < 5; i++) s += crate(150 + i * 90, h * 0.46 - 56, 60, 46, "#5a4632");
+    // freight train on the near track
+    s += '<rect y="' + (h - 110) + '" width="' + w + '" height="110" fill="#2a2f38"/><path d="M0 ' + (h - 96) + 'H' + w + '" stroke="#8a97a3" stroke-width="3"/>';
+    s += boxcar(-20, h - 96, 220, 80, "#4a2a1a") + boxcar(206, h - 96, 220, 80, "#3a2a22") + boxcar(432, h - 96, 220, 80, "#4a2a1a");
+    s += crate(60, h - 96 - 80, 60, 40, "#5a4632") + crate(300, h - 96 - 80, 60, 40, "#5a4632");
+    return s;
+  };
+
+  P.p6b = function (w, h) { // Dan rides the train, shield strapped to his back, hard hat on
+    var r = rng(83), s, i;
+    s = '<defs><linearGradient id="p6b-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a86a8"/><stop offset="1" stop-color="#cfd9d0"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p6b-sky)"/>';
+    // moving landscape: rolling hills blurring past
+    for (i = 0; i < 4; i++) s += '<path d="M' + (i * 240 - 60) + ' ' + (h * 0.5) + 'q120 -80 240 0Z" fill="#5a7a5a" opacity="' + (0.4 + i * 0.08) + '"/>';
+    s += '<g opacity=".5">';
+    for (i = 0; i < 12; i++) s += '<path d="M' + (r() * w) + ' ' + (h * 0.3 + r() * h * 0.2) + 'h' + (40 + r() * 80) + '" stroke="#dfe8f2" stroke-width="3"/>';
+    s += '</g>';
+    // boxcar roof Dan rides
+    s += '<rect y="' + (h - 180) + '" width="' + w + '" height="180" fill="#3a2a22" stroke="#05080f" stroke-width="3"/>';
+    s += '<path d="M0 ' + (h - 180) + 'H' + w + '" stroke="#ffb26b" stroke-width="3" opacity=".5"/>';
+    for (i = 1; i < 7; i++) s += '<rect x="' + (i * w / 7) + '" y="' + (h - 180) + '" width="3" height="180" fill="#05080f" opacity=".4"/>';
+    // shield strapped to his back (behind him)
+    s += shieldAt(320, h - 300, 0.22, "dormant");
+    s += '<path d="M300 ' + (h - 340) + 'L360 ' + (h - 300) + 'M300 ' + (h - 260) + 'L360 ' + (h - 300) + '" stroke="' + C.denim + '" stroke-width="8"/>';
+    s += dan(400, h - 180, 2.0, "stand", true, { look: -1 });
+    return s;
+  };
+
+  P.p6c = function (w, h) { // night in WV mountains, trucks with no lights, mercenaries led by Krait raise rifles
+    var r = rng(85), s = nightSky(w, 160, 85), i;
+    s += '<rect y="156" width="' + w + '" height="' + (h - 156) + '" fill="#10161e"/>';
+    // tracks alongside
+    s += '<path d="M0 ' + (h - 40) + 'H' + w + '" stroke="#8a97a3" stroke-width="3" opacity=".6"/>';
+    // trucks running dark, no lights
+    s += truckFront(170, 280, 0.9, 0) + truckFront(600, 300, 1.0, 0);
+    // mercenaries raising rifles, led by Krait (front, no hat, dark)
+    s += merc(110, 560, 0.95, { look: 1 }) + rifle(150, 400, -14, 2.0);
+    s += merc(300, 560, 0.95, { look: 1 }) + rifle(340, 400, -14, 2.0);
+    s += merc(500, 560, 0.95, { look: -1, flip: true }) + rifle(470, 400, 194, 2.0);
+    // Krait, out front
+    s += merc(690, 600, 1.15, { look: -1, hat: null, hair: "#0d1014", coat: "#1c2024" }) + rifle(640, 420, 200, 2.3);
+    return s;
+  };
+
+  P.p6d = function (w, h) { // Dan atop a freight car lit by the moon
+    var r = rng(87), s = nightSky(w, 200, 87), i;
+    s += '<rect y="196" width="' + w + '" height="' + (h - 196) + '" fill="#10161e"/>';
+    // moonlight rim from upper right
+    s += '<defs><radialGradient id="p6d-m" cx=".8" cy=".2" r=".7"><stop offset="0" stop-color="#dfe8f2" stop-opacity=".4"/><stop offset="1" stop-color="#dfe8f2" stop-opacity="0"/></radialGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p6d-m)"/>';
+    // the boxcar he stands on
+    s += '<rect y="' + (h - 150) + '" width="' + w + '" height="150" fill="#3a2a22" stroke="#05080f" stroke-width="3"/>';
+    s += '<path d="M0 ' + (h - 150) + 'H' + w + '" stroke="#dfe8f2" stroke-width="3" opacity=".5"/>';
+    for (i = 1; i < 6; i++) s += '<rect x="' + (i * w / 6) + '" y="' + (h - 150) + '" width="3" height="150" fill="#05080f" opacity=".4"/>';
+    s += dan(390, h - 150, 2.3, "stand", true, { look: 1, rim: "#dfe8f2" });
+    return s;
+  };
+
+  /* ----- Page 8: Derailed ----- */
+  P.p8a = function (w, h) { // the train jumps the track, crates spill down the embankment (break machines not bodies)
+    var r = rng(91), s = nightSky(w, 150, 91), i;
+    s += '<rect y="146" width="' + w + '" height="' + (h - 146) + '" fill="#14202c"/>';
+    // the embankment hillside
+    s += '<path d="M0 ' + (h * 0.3) + 'L' + w + ' ' + (h * 0.55) + 'L' + w + ' ' + h + 'L0 ' + h + 'Z" fill="#2a3a30"/>';
+    s += '<path d="M0 ' + (h * 0.3) + 'L' + w + ' ' + (h * 0.55) + '" stroke="#8a97a3" stroke-width="3" opacity=".5"/>';
+    // derailed boxcar at an angle
+    s += '<g transform="translate(260 320) rotate(22)">' + boxcar(-110, 40, 220, 90, "#4a2a1a") + '</g>';
+    s += '<g transform="translate(520 420) rotate(-16)">' + boxcar(-100, 40, 200, 80, "#3a2a22") + '</g>';
+    // broken bent rails
+    s += '<path d="M60 ' + (h * 0.36) + 'Q300 ' + (h * 0.5) + ' 420 ' + (h * 0.62) + 'L460 ' + (h * 0.6) + '" stroke="#8a97a3" stroke-width="4" fill="none"/>';
+    s += '<path d="M420 ' + (h * 0.62) + 'l40 -60" stroke="#8a97a3" stroke-width="4"/>';
+    // scattered crates tumbling down the hill
+    for (i = 0; i < 7; i++) {
+      var cx = 180 + i * 80 + r() * 30, cy = h * 0.42 + i * 60 + r() * 40;
+      s += '<g transform="translate(' + f1(cx) + ' ' + f1(cy) + ') rotate(' + f1((r() - 0.5) * 80) + ')">' + crate(-34, 0, 68, 48, i % 2 ? "#4a3a2a" : "#3a3126") + '</g>';
+    }
+    // spilled machine parts (no bodies)
+    for (i = 0; i < 4; i++) s += '<g transform="translate(' + (120 + i * 160) + ' ' + (h - 90 + r() * 30) + ') rotate(' + f1((r() - 0.5) * 60) + ')"><rect x="-30" y="-14" width="60" height="28" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="2"/></g>';
+    return s;
+  };
+
+  P.p8b = function (w, h) { // morning, Dan among the wreckage, machines broken across the hillside
+    var r = rng(93), s, i;
+    s = '<defs><linearGradient id="p8b-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cbd6"/><stop offset="1" stop-color="#e9d9c0"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p8b-sky)"/>';
+    s += '<path d="M0 ' + (h * 0.4) + 'L' + w + ' ' + (h * 0.3) + 'L' + w + ' ' + h + 'L0 ' + h + 'Z" fill="#6a7a5a"/>';
+    s += '<path d="M0 ' + (h * 0.4) + 'L' + w + ' ' + (h * 0.3) + '" stroke="#4a5a3a" stroke-width="3" opacity=".5"/>';
+    // broken machines scattered
+    for (i = 0; i < 5; i++) {
+      var mx = 90 + i * 150 + r() * 20, my = h * 0.5 + i * 24;
+      s += '<g transform="translate(' + f1(mx) + ' ' + f1(my) + ') rotate(' + f1((r() - 0.5) * 50) + ')"><rect x="-40" y="-30" width="80" height="60" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="2"/><rect x="-24" y="-46" width="48" height="18" fill="' + C.steel2 + '"/><path d="M-10 -30l20 60" stroke="' + C.rust + '" stroke-width="3"/></g>';
+    }
+    // tumbled crate and a bent rail
+    s += '<g transform="translate(560 ' + (h * 0.62) + ') rotate(24)">' + crate(-40, 0, 80, 54, "#4a3a2a") + '</g>';
+    s += '<path d="M40 ' + (h * 0.5) + 'q200 40 360 120" stroke="#8a97a3" stroke-width="4" fill="none" opacity=".6"/>';
+    s += dan(300, h - 70, 2.1, "stand", true, { look: 0 });
+    return s;
+  };
+
+  P.p8c = function (w, h) { // Hollis arrives, devastated
+    var r = rng(95), s;
+    s = '<defs><linearGradient id="p8c-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9bcc8"/><stop offset="1" stop-color="#d9cbb6"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p8c-sky)"/>';
+    s += '<path d="M0 ' + (h * 0.62) + 'H' + w + 'V' + h + 'H0Z" fill="#6a7a5a"/>';
+    // broken machine behind
+    s += '<g transform="translate(560 ' + (h * 0.66) + ') rotate(16)"><rect x="-44" y="-30" width="88" height="60" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="2"/></g>';
+    // Hollis = man() long-hair auburn coat as on Pages 2-3, hands down, devastated
+    s += man(300, h - 60, 2.2, { coat: "#7a2a2e", pants: "#1a1d22", skin: "#c9a085", hair: "#7a5a3a", long: true, look: 0, rim: "#ffb26b" });
+    return s;
+  };
+
+  P.p8d = function (w, h) { // Dan kneels, hand on a cracked spindle housing
+    var r = rng(97), s;
+    s = '<defs><linearGradient id="p8d-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cbd6"/><stop offset="1" stop-color="#e9d9c0"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p8d-sky)"/>';
+    s += '<path d="M0 ' + (h * 0.58) + 'H' + w + 'V' + h + 'H0Z" fill="#6a7a5a"/>';
+    // cracked spindle housing
+    s += '<g transform="translate(470 ' + (h - 150) + ')"><rect x="-70" y="-60" width="140" height="90" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/><circle cx="0" cy="-16" r="26" fill="#171c22" stroke="' + C.steel3 + '" stroke-width="3"/>';
+    s += '<path d="M-70 -40L-30 -10L10 -46L50 -4L70 -24" stroke="' + C.rust + '" stroke-width="4" fill="none"/></g>';
+    s += dan(240, h - 60, 2.1, "reach", false, { kneel: true, look: 1 });
+    return s;
+  };
+
+  /* ----- Page 9: The Build ----- */
+  P.p9a = function (w, h) { // montage, Ashford workers with flatbeds and cranes hauling machines home
+    var r = rng(101), s, i;
+    s = '<defs><linearGradient id="p9a-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a94b0"/><stop offset="1" stop-color="#cfd9d0"/></linearGradient></defs>';
+    s += '<rect width="' + w + '" height="' + h + '" fill="url(#p9a-sky)"/>';
+    s += '<path d="M0 ' + (h * 0.55) + 'H' + w + 'V' + h + 'H0Z" fill="#5a6a5a"/>';
+    s += '<rect y="' + (h - 120) + '" width="' + w + '" height="120" fill="#4a4a50"/><path d="M0 ' + (h - 120) + 'H' + w + '" stroke="#ffb26b" stroke-width="2" opacity=".4"/>';
+    s += crane(620, h * 0.55, 0.8);
+    s += flatbed(220, h - 60, 1.1);
+    s += crate(150, h - 150, 70, 54, "#4a3a2a") + crate(230, h - 150, 70, 54, "#3a3126");
+    s += crowd(r, 420, w - 20, h - 70, 1.0, ["#2a3a4a", "#3a2f26", "#2a3139"]);
+    return s;
+  };
+
+  P.p9b = function (w, h) { // Dan walks the bay matching parts, pointing; workers rebuild, reweld, realign (welding sparks)
+    var r = rng(103), s = plantBg(w, h, r, 300), i;
+    for (i = 0; i < 3; i++) s += lathe(180 + i * 230, 320, 0.7, false);
+    s += crowd(r, 440, w - 20, 560, 1.1, ["#2a3a4a", "#3a2f26", "#2a3139"]);
+    // welding sparks (amber-white accents)
+    for (i = 0; i < 14; i++) s += flash(f1(480 + r() * 240), f1(360 + r() * 140), 0.5 + r() * 0.7);
+    s += '<path d="M520 420L560 410" stroke="#ffe9a0" stroke-width="3" opacity=".8"/>';
+    s += dan(240, 720, 2.0, "point", false, { look: 1 });
+    return s;
+  };
+
+  P.p9c = function (w, h) { // Walt teaching high-school kids on a lathe
+    var r = rng(105), s = plantBg(w, h, r, 300);
+    s += lathe(430, 380, 1.0, false);
+    // cluster of smaller/younger figures
+    s += crowd(r, 420, w - 20, 560, 0.85, ["#2a4a6a", "#6a3a3a", "#3a5a3a", "#5a4a2a"]);
+    s += man(220, 720, 2.0, { coat: "#6a3a2a", pants: "#2a2f38", skin: "#c19a7b", hair: "#cfd5da", pose: "point", look: 1, rim: "#ffb26b" });
+    return s;
+  };
+
+  P.p9d = function (w, h) { // a wall calendar DAY 87 and the completed gleaming line
+    var r = rng(107), s = plantBg(w, h, r, 340), i;
+    for (i = 0; i < 4; i++) s += lathe(140 + i * 180, 420, 0.62, true);
+    // bright rim light across the line
+    s += '<path d="M40 300H' + (w - 40) + '" stroke="#ffe9a0" stroke-width="3" opacity=".6"/>';
+    for (i = 0; i < 4; i++) s += '<rect x="' + (80 + i * 180) + '" y="358" width="120" height="4" fill="#dfe8f2" opacity=".8"/>';
+    s += calendar(680, 150, 1.0, "DAY 87");
+    return s;
+  };
+
   window.GH = { C: C, shield: shield, shieldAt: shieldAt, panels: P, gearPath: gearPath };
   if (typeof module !== "undefined") module.exports = window.GH;
 })();
