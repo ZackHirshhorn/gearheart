@@ -856,7 +856,7 @@
     // cracked spindle housing
     s += '<g transform="translate(470 ' + (h - 150) + ')"><rect x="-70" y="-60" width="140" height="90" fill="' + C.steel + '" stroke="' + C.ink + '" stroke-width="3"/><circle cx="0" cy="-16" r="26" fill="#171c22" stroke="' + C.steel3 + '" stroke-width="3"/>';
     s += '<path d="M-70 -40L-30 -10L10 -46L50 -4L70 -24" stroke="' + C.rust + '" stroke-width="4" fill="none"/></g>';
-    s += dan(240, h - 60, 2.1, "reach", false, { kneel: true, look: 1 });
+    s += dan(240, h - 60, 2.1, "reach", true, { kneel: true, look: 1 });
     return s;
   };
 
