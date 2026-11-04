@@ -6,29 +6,66 @@
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* rect = [x, y, w, h] in a 800 x 1100 page. ov = overlays in HTML. */
+  var COMING = "Pages 4-6 are coming: Dan's current surge saves Walt, the machines start to talk to him, Walt gives him the shield from over the tool crib, and Hollis's machines ship by freight from Baltimore to Ohio. For now, Page 7 jumps ahead to the Torque Wave fight.";
   var PAGES = [
     { label: "Prologue", panels: [
       { rect: [0, 0, 800, 1100], art: "prologue", ov: [
-        { t: "cap", pos: "tl", text: "Once, this country built everything. Then one day, it stopped." }] }] },
+        { t: "cap wide", pos: "tl", text: "We designed the world's machines. Then we shipped the work of building them overseas." },
+        { t: "cap", pos: "bl", text: "Now we're bringing it back." }] }] },
     { label: "Page 1", panels: [
       { rect: [12, 12, 776, 520], art: "p1a", ov: [
-        { t: "cap dan wide", pos: "tl", text: "My father worked this floor for thirty-one years. He used to say a machine is just a promise that someone's hands made." }] },
-      { rect: [12, 544, 380, 544], art: "p1b", ov: [] },
+        { t: "cap", pos: "tl", style: "max-width:30%", text: "We never stopped inventing. We stopped making." },
+        { t: "bubble", pos: "tr", style: "right:2%;top:3%;max-width:44%;--tx:20%", who: "THE PRESIDENT", text: "America never stopped inventing. The best engineers in the world are still right here. What we lost was the making. The factories. The jobs. That's what we're bringing home." }] },
+      { rect: [12, 544, 380, 544], art: "p1b", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:2%;max-width:44%;--tx:60%", who: "WALT", text: "Believe him?" },
+        { t: "bubble", pos: "tl", style: "left:3%;top:14%;max-width:56%;--tx:30%", who: "DAN", text: "I believe him. I just know how hard it is to move a factory." },
+        { t: "cap", pos: "bl", style: "max-width:80%", text: "Dan Reyes-Holloway, 34, third-generation machinist. Beside him, his old foreman Walt Kowalski, 61." }] },
       { rect: [404, 544, 384, 544], art: "p1c", ov: [
-        { t: "sfx hum", pos: "tl", text: "hmmmmmmMMMMM" }] }] },
+        { t: "bubble", pos: "tl", style: "left:4%;top:3%;max-width:64%;--tx:25%", who: "THE PRESIDENT", text: "If we can't make our own steel, our own parts, our own medicine, then we depend on someone else for our survival. Not anymore." }] }] },
     { label: "Page 2", panels: [
-      { rect: [12, 12, 776, 420], art: "p2a", ov: [
-        { t: "cap wide", pos: "tl", text: "Nobody told the town what was under the factory. Not the owners. Not the bank. Not the government that quietly sealed it." }] },
-      { rect: [12, 444, 776, 300], art: "p2b", ov: [
-        { t: "bubble", pos: "tl", style: "left:6%;top:8%;--tx:30%", text: "Whatever you are... I'm done watching things die." }] },
-      { rect: [12, 756, 776, 332], art: "p2c", ov: [
-        { t: "sfx big", pos: "tr", text: "KRAAAAA-THOOOOOM" }] }] },
-    { label: "Page 3", panels: [
-      { rect: [12, 12, 776, 180], art: "p3a", ov: [
-        { t: "cap wide", pos: "tl", style: "top:12%", text: "I could hear them. Every engine. Every motor. Every relay and bearing in the county. They were all talking." }] },
-      { rect: [12, 204, 380, 884], art: "p3b", ov: [] },
-      { rect: [404, 204, 384, 884], art: "p3c", shield: true, ov: [
-        { t: "cap", pos: "bl", text: "And it was waiting for me." }] }] }
+      { rect: [12, 12, 776, 300], art: "p2a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:36%", text: "Elaine Hollis, CEO of Hollis Bearing Co. Her family company moved production overseas in 2004." },
+        { t: "bubble", pos: "tr", style: "right:2%;top:3%;max-width:42%;--tx:30%", who: "HOLLIS", text: "We're bringing our whole line back. Sixty machines, two hundred jobs. But the people who set it up retired years ago. Nobody here knows how to stand it up." }] },
+      { rect: [12, 324, 380, 380], art: "p2b", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:40%;--tx:40%", who: "THE PRESIDENT", text: "Who restored this?" },
+        { t: "bubble", pos: "tr", style: "right:3%;top:17%;max-width:50%;--tx:30%", who: "WALT", text: "Him. Dan can set up a line faster than anybody I've seen in forty years." },
+        { t: "cap", pos: "bl", style: "max-width:55%", text: "A 1970s turret lathe, rebuilt by hand. It already runs smooth." }] },
+      { rect: [404, 324, 384, 380], art: "p2c", ov: [
+        { t: "bubble", pos: "tl", style: "left:2%;top:2%;max-width:38%;--tx:50%", who: "THE PRESIDENT", text: "Then he's your man. Get that line home and get it running." }] },
+      { rect: [12, 716, 776, 372], art: "p2d", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:30%;--tx:60%", who: "HOLLIS", text: "Ninety days. Can you do it?" },
+        { t: "bubble", pos: "tr", style: "right:3%;top:3%;max-width:30%;--tx:30%", who: "DAN", text: "Ship me the machines." }] }] },
+    { label: "Page 3", note: "Up next: Pages 4-6 are coming. This issue skips ahead to Page 7.", panels: [
+      { rect: [12, 12, 776, 300], art: "p3a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "A boardroom overseas. Meridian Pacific Consortium, a state-backed manufacturing giant, owns the plant Hollis is leaving." }] },
+      { rect: [12, 324, 380, 380], art: "p3b", ov: [
+        { t: "cap", pos: "bl", style: "max-width:50%", text: "Director Shao Lin-Wei watches the Ashford speech." },
+        { t: "bubble", pos: "tr", style: "right:3%;top:50%;max-width:50%;--tx:30%", who: "SHAO", text: "If Hollis brings its line home and it works, fifty companies follow. Then a hundred. They won't need us." }] },
+      { rect: [404, 324, 384, 380], art: "p3c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:46%", text: "Marguerite Voss, an American logistics fixer who sells to the highest bidder." },
+        { t: "bubble", pos: "br", style: "right:2%;bottom:5%;max-width:60%;--tx:25%", who: "VOSS", text: "Then the line never runs. Ships get delayed. Crates get damaged. Parts go missing. A factory that can't start is just a press release." }] },
+      { rect: [12, 716, 776, 372], art: "p3d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:30%", text: "Shao slides over a file marked HOLLIS / ASHFORD." },
+        { t: "bubble", pos: "tr", style: "right:2%;top:3%;max-width:31%;--tx:30%", who: "SHAO", text: "The President's program rests on the first plants succeeding. Make this one fail." }] }] },
+    { label: "Page 7", note: COMING, panels: [
+      { rect: [12, 12, 300, 260], art: "p7a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:92%;font-size:1.5cqw", text: "Night, the West Virginia mountains. Krait's mercenaries, in trucks running without lights, open fire on the freight train." }] },
+      { rect: [324, 12, 464, 532], art: "p7b", ov: [
+        { t: "sfx", pos: "tl", style: "font-size:3.7cqw;left:3%;top:3%", text: "CHK-CHK-CHK-CHK-CHK-CHK" },
+        { t: "cap", pos: "br", style: "max-width:52%", text: "Dan raises the shield. The gears spin and six star-gears orbit into place to block every round." }] },
+      { rect: [12, 284, 300, 260], art: "p7c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:60%;font-size:1.5cqw", text: "Dan leaps from the freight car and lands hard on the trackbed." },
+        { t: "bubble", pos: "tr", style: "right:3%;top:30%;max-width:46%;--tx:40%;font-size:1.7cqw", who: "KRAIT", text: "He's alone. Rush him!" }] },
+      { rect: [12, 556, 776, 360], art: "p7d", shield: true, ov: [
+        { t: "sfx big", pos: "tl", style: "font-size:6.4cqw", text: "VRRRRRRMMMMM \u2014 THOOOOOM" },
+        { t: "sfx", pos: "tr", style: "font-size:2.4cqw;top:44%;right:6%;transform:rotate(8deg)", text: "tik tik tak tik" },
+        { t: "sfx", pos: "tl", style: "font-size:2.2cqw;left:8%;top:60%;transform:rotate(-12deg)", text: "tik tak tik" },
+        { t: "cap wide", pos: "bl", style: "max-width:44%", text: "Dan drops to one knee and drives the shield's rim into the gravel. Rotation sends a shock wave rolling outward." }] },
+      { rect: [12, 928, 260, 160], art: "p7e", ov: [
+        { t: "cap dan", pos: "tr", style: "max-width:62%;font-size:1.5cqw;top:6%", who: "DAN", text: "Every machine has a drive. This one's mine." }] },
+      { rect: [284, 928, 504, 160], art: "p7f", ov: [
+        { t: "sfx big", pos: "tr", style: "font-size:6cqw;top:4%;right:5%", text: "KRA-THOOM" },
+        { t: "cap", pos: "bl", style: "max-width:44%;font-size:1.5cqw", text: "Krait, dazed in the dirt, slams his hand down on a detonator." }] }] }
   ];
 
   var stage = document.getElementById("stage");
@@ -52,7 +89,9 @@
       svg.innerHTML = G.panels[p.art](r[2], r[3]);
       d.appendChild(svg);
       p.ov.forEach(function (o) {
-        var n = el("div", o.t + " " + o.pos, o.text);
+        var n = el("div", o.t + " " + o.pos);
+        if (o.who) n.appendChild(el("span", "who", o.who));
+        n.appendChild(document.createTextNode(o.text));
         if (o.style) n.setAttribute("style", o.style);
         d.appendChild(n);
       });
@@ -68,8 +107,9 @@
   function show(i) {
     cur = Math.max(0, Math.min(PAGES.length - 1, i));
     stage.innerHTML = "";
+    if (PAGES[cur].note) stage.appendChild(el("p", "note", PAGES[cur].note));
     stage.appendChild(build(PAGES[cur]));
-    indicator.textContent = PAGES[cur].label + "  (" + (cur + 1) + "/" + PAGES.length + ")";
+    indicator.textContent = PAGES[cur].label + "  (" + (cur + 1) + "/" + PAGES.length + ")" + (cur === PAGES.length - 1 ? " - Pages 4-6 coming" : "");
     document.getElementById("prev").disabled = cur === 0;
     document.getElementById("next").disabled = cur === PAGES.length - 1;
     if (history.replaceState) history.replaceState(null, "", "#" + cur);
@@ -82,6 +122,7 @@
   var autoBtn = document.getElementById("labauto");
   var countEl = document.getElementById("labcount");
   var L = null; // lab runtime
+  var waveBtn = document.getElementById("labwave");
 
   function openLab() {
     lab.hidden = false;
@@ -89,7 +130,7 @@
     L.running = true; L.last = 0;
     requestAnimationFrame(tick);
   }
-  function closeLab() { lab.hidden = true; if (L) { L.running = false; setAuto(false); } }
+  function closeLab() { lab.hidden = true; if (L) { L.running = false; setAuto(false); if (L.wave) endWave(); } }
 
   function setActive(on) {
     L.active = on;
@@ -101,19 +142,22 @@
     autoBtn.textContent = "Auto-fire: " + (on ? "ON" : "OFF");
     autoBtn.setAttribute("aria-pressed", on ? "true" : "false");
     if (L && L.timer) { clearInterval(L.timer); L.timer = null; }
+    if (on && L && L.wave) return;
     if (on && L) L.timer = setInterval(function () { fire(Math.random() * Math.PI * 2); }, 900);
   }
 
   function initLab() {
     var svg = document.createElementNS(NS, "svg");
     svg.setAttribute("viewBox", "-250 -250 500 500");
-    svg.innerHTML = '<g id="labshield"></g><g id="labfx"></g><line id="aim" x1="0" y1="0" x2="0" y2="0" stroke="#9fe0ff" stroke-width="2" stroke-dasharray="6 6" opacity="0"/>';
+    svg.innerHTML = '<g id="labground" opacity="0"></g><g id="labshield"></g><g id="labfx"></g><g id="wavefx"></g><line id="aim" x1="0" y1="0" x2="0" y2="0" stroke="#9fe0ff" stroke-width="2" stroke-dasharray="6 6" opacity="0"/>';
     labStage.appendChild(svg);
     var holder = svg.querySelector("#labshield");
+    var ground = svg.querySelector("#labground");
+    ground.innerHTML = '<rect x="-250" y="224" width="500" height="30" fill="#3a424b"/><path d="M-250 224H250" stroke="#8a97a3" stroke-width="2"/>';
     holder.innerHTML = G.shield("dormant");
     var g = holder.firstChild;
     L = { svg: svg, g: g, fx: svg.querySelector("#labfx"), aim: svg.querySelector("#aim"), active: false, carrier: 0, sunA: 0, pspin: 0,
-      planets: [], pa: [], over: [], proj: [], sparks: [], blocked: 0, running: false, last: 0, timer: null, hover: null };
+      holder: holder, ground: ground, wfx: svg.querySelector("#wavefx"), wave: null, boost: 1, planets: [], pa: [], over: [], proj: [], sparks: [], blocked: 0, running: false, last: 0, timer: null, hover: null };
     g.setAttribute("class", "shield lab dormant");
     var ps = g.querySelectorAll(".planet");
     for (var i = 0; i < ps.length; i++) {
@@ -125,12 +169,15 @@
     stateBtn.addEventListener("click", function () { setActive(!L.active); });
     autoBtn.addEventListener("click", function () { setAuto(autoBtn.getAttribute("aria-pressed") !== "true"); });
     svg.addEventListener("pointermove", function (e) {
+      if (L.wave) return;
       var a = angleOf(e); L.hover = a;
       aimAt(a, Infinity);
       L.aim.setAttribute("x2", Math.cos(a) * 240); L.aim.setAttribute("y2", Math.sin(a) * 240); L.aim.setAttribute("opacity", ".7");
     });
     svg.addEventListener("pointerleave", function () { L.hover = null; L.aim.setAttribute("opacity", "0"); releaseAll(); });
-    svg.addEventListener("click", function (e) { fire(angleOf(e)); });
+    svg.addEventListener("click", function (e) { if (!L.wave) fire(angleOf(e)); });
+    L.waveBtn = waveBtn;
+    waveBtn.addEventListener("click", toggleWave);
     setActive(false);
   }
 
@@ -183,7 +230,7 @@
     if (!L || !L.running) return;
     var dt = L.last ? Math.min(0.05, (ts - L.last) / 1000) : 0.016; L.last = ts;
     var i;
-    if (L.active && !reduced) { L.carrier += dt * 40; L.pspin -= dt * 110; L.sunA -= dt * 70; }
+    if (L.active && !reduced) { L.carrier += dt * 40 * L.boost; L.pspin -= dt * 110 * L.boost; L.sunA -= dt * 70 * L.boost; }
     for (i = 0; i < 6; i++) {
       var o = L.over[i], base = i * 60 - 90 + L.carrier, tgt = base;
       if (o) { tgt = o.target; if (o.hold !== Infinity) { o.hold -= dt; if (o.hold <= 0) { L.over[i] = null; } } }
@@ -211,7 +258,89 @@
       s.n.setAttribute("x1", s.x); s.n.setAttribute("y1", s.y); s.n.setAttribute("x2", s.x - s.vx * 0.05); s.n.setAttribute("y2", s.y - s.vy * 0.05);
       s.n.setAttribute("opacity", Math.min(1, s.life * 4));
     }
+    if (L.wave && !reduced) stepWave(dt);
     requestAnimationFrame(tick);
+  }
+
+
+  /* ---------------- Torque Wave demo ----------------
+     The shield is planted rim-first in gravel and spins up. A ring of gravel and dust erupts UPWARD
+     around it, rolls outward as a wave and rains back down. A clear, calm circle stays around the shield.
+     Nothing is fired at anyone. With reduced motion the final crown is shown as one static frame. */
+  var GY = 224, GRAV = 520;
+  function mk(tag, attrs) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function toggleWave() { if (!L) return; if (L.wave) endWave(); else startWave(); }
+
+  function startWave() {
+    var i, th, rnd = Math.random, tones = ["#5b6670", "#7a8590", "#3a424b", "#a9b4be"];
+    L.prevActive = L.active; setActive(true); setAuto(false); releaseAll();
+    L.aim.setAttribute("opacity", "0");
+    L.holder.setAttribute("transform", "translate(0 70) scale(.8)");
+    L.ground.setAttribute("opacity", "1");
+    var calm = mk("ellipse", { cx: 0, cy: GY + 4, rx: 10, ry: 2, fill: "#59606a", "fill-opacity": ".6", stroke: "#dfe8f2", "stroke-width": 2, "stroke-dasharray": "8 6" });
+    L.wfx.appendChild(calm);
+    var parts = [], dust = [];
+    for (i = 0; i < 90; i++) {
+      th = i / 90 * Math.PI * 2 + rnd() * 0.05;
+      var n = mk("circle", { r: (2 + rnd() * 4).toFixed(1), fill: tones[Math.floor(rnd() * tones.length)], stroke: "#ffb26b", "stroke-opacity": ".5", "stroke-width": .6 });
+      L.wfx.appendChild(n);
+      parts.push({ n: n, x: Math.cos(th) * 40, y: Math.sin(th) * 8, z: 0, vx: Math.cos(th) * (90 + rnd() * 120), vy: Math.sin(th) * (20 + rnd() * 30), vz: 240 + rnd() * 230, landed: false });
+    }
+    for (i = 0; i < 20; i++) {
+      th = i / 20 * Math.PI * 2;
+      var d = mk("circle", { r: 12, fill: "#b8c4cf", opacity: 0 });
+      L.wfx.insertBefore(d, calm.nextSibling);
+      dust.push({ n: d, x: Math.cos(th) * 40, y: Math.sin(th) * 8, vx: Math.cos(th) * 80, vy: Math.sin(th) * 14, r: 12 });
+    }
+    L.wave = { t: 0, parts: parts, dust: dust, calm: calm };
+    if (reduced) {
+      /* static frame: crown frozen mid-eruption, calm circle fully open */
+      var t = 0.5, w = L.wave;
+      w.parts.forEach(function (p) { p.x += p.vx * t; p.y += p.vy * t; p.z = p.vz * t - 0.5 * GRAV * t * t; place(p); });
+      w.dust.forEach(function (d) { d.x += d.vx * 1.2; d.y += d.vy * 1.2; d.r = 34; d.n.setAttribute("cx", d.x.toFixed(1)); d.n.setAttribute("cy", (GY + d.y - 30).toFixed(1)); d.n.setAttribute("r", 34); d.n.setAttribute("opacity", ".25"); });
+      calm.setAttribute("rx", 150); calm.setAttribute("ry", 22);
+      L.waveBtn.textContent = "Torque Wave: reset";
+    } else L.waveBtn.textContent = "Torque Wave: stop";
+  }
+
+  function place(p) { p.n.setAttribute("cx", p.x.toFixed(1)); p.n.setAttribute("cy", (GY + p.y - Math.max(0, p.z)).toFixed(1)); }
+
+  function stepWave(dt) {
+    var w = L.wave, i;
+    w.t += dt;
+    L.boost = w.t < 1.2 ? 1 + w.t * 5 : Math.max(1, 7 - (w.t - 1.2) * 4);
+    for (i = 0; i < w.parts.length; i++) {
+      var p = w.parts[i];
+      if (!p.landed) {
+        p.x += p.vx * dt; p.y += p.vy * dt; p.vz -= GRAV * dt; p.z += p.vz * dt;
+        if (p.z <= 0 && p.vz < 0) { p.z = 0; p.landed = true; p.vx *= 0.4; p.vy *= 0.4; }
+      } else { p.x += p.vx * dt; p.y += p.vy * dt; p.vx *= 0.95; p.vy *= 0.95; }
+      place(p);
+      p.n.setAttribute("opacity", w.t > 2.6 ? Math.max(0, 1 - (w.t - 2.6) * 1.2).toFixed(2) : 1);
+    }
+    for (i = 0; i < w.dust.length; i++) {
+      var d = w.dust[i];
+      d.x += d.vx * dt; d.y += d.vy * dt; d.r += 40 * dt;
+      d.n.setAttribute("cx", d.x.toFixed(1)); d.n.setAttribute("cy", (GY + d.y - d.r * 0.6).toFixed(1)); d.n.setAttribute("r", d.r.toFixed(1));
+      d.n.setAttribute("opacity", Math.max(0, 0.35 - w.t * 0.1).toFixed(2));
+    }
+    var open = Math.min(1, w.t / 0.9);
+    w.calm.setAttribute("rx", (10 + 140 * open).toFixed(1)); w.calm.setAttribute("ry", (2 + 20 * open).toFixed(1));
+    if (w.t > 3.6) endWave();
+  }
+
+  function endWave() {
+    if (!L || !L.wave) return;
+    while (L.wfx.firstChild) L.wfx.removeChild(L.wfx.firstChild);
+    L.wave = null; L.boost = 1;
+    L.holder.removeAttribute("transform");
+    L.ground.setAttribute("opacity", "0");
+    setActive(!!L.prevActive);
+    L.waveBtn.textContent = "Torque Wave";
   }
 
   /* ---------------- wiring ---------------- */
