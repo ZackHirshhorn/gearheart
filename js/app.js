@@ -75,7 +75,7 @@
       { rect: [12, 384, 380, 320], art: "p6b", ov: [
         { t: "cap", pos: "tl", style: "max-width:58%", text: "Dan rides the train, with the shield strapped to his back and a hard hat on." }] },
       { rect: [404, 384, 384, 320], art: "p6c", ov: [
-        { t: "cap", pos: "tl", style: "max-width:60%;font-size:1.6cqw", text: "Night in the mountains of West Virginia. Trucks with no lights pull alongside the tracks. Mercenaries led by KRAIT raise their rifles." },
+        { t: "cap", pos: "tl", style: "max-width:60%;font-size:1.6cqw", text: "Night in the mountains of West Virginia. Trucks with no lights pull alongside the tracks. Mercenaries hired by Voss, led by KRAIT, raise their rifles." },
         { t: "bubble", pos: "br", style: "right:3%;bottom:5%;max-width:60%;--tx:30%;font-size:1.7cqw", who: "KRAIT", text: "Hit the flatcars. Wreck the machines. No line, no factory." }] },
       { rect: [12, 716, 776, 372], art: "p6d", ov: [
         { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:40%;--tx:40%", who: "DAN", text: "Those are two hundred jobs. You don't touch them." }] }] },
@@ -118,7 +118,7 @@
         { t: "cap", pos: "tl", style: "max-width:40%", text: "A calendar on the wall: DAY 87. The line is complete and gleaming." }] }] },
     { label: "Page 10", panels: [
       { rect: [12, 12, 776, 360], art: "p10a", ov: [
-        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "Start-up day. The ribbon-cutting. Hollis, the workers, and cameras gather. Krait, disguised as a contractor, slips away from the main drive." }] },
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "The ribbon-cutting. Hollis, the workers, and cameras gather. Krait, disguised as a contractor, slips away from the main drive." }] },
       { rect: [12, 384, 380, 320], art: "p10b", ov: [
         { t: "cap", pos: "tl", style: "max-width:52%", text: "Hollis reaches for the start button. Dan freezes." },
         { t: "cap dan", pos: "br", style: "max-width:62%", who: "DAN", text: "Something was wrong. The main drive was screaming." }] },
@@ -155,7 +155,7 @@
       { rect: [0, 0, 800, 1100], art: "p13", ov: [
         { t: "cap wide", pos: "tl", style: "max-width:52%", text: "We never lost the ideas. We lost the hands." },
         { t: "cap", pos: "tr", style: "right:3%;top:3%;max-width:40%", text: "I'm here to bring them back." },
-        { t: "cap wide", pos: "bc", style: "max-width:72%", text: "GEARHEART returns in Issue #2: Forty Lines." }] }] },
+        { t: "cap wide", pos: "bc", style: "max-width:72%", text: "GEARHEART returns in Issue #2: \"Forty Lines.\"" }] }] },
     { label: "Post-Credits", panels: [
       { rect: [12, 12, 776, 1076], art: "pct", ov: [
         { t: "cap", pos: "tl", style: "max-width:62%", text: "Meridian Pacific's boardroom. Shao watches footage of the line starting." },
@@ -201,7 +201,6 @@
   function show(i) {
     cur = Math.max(0, Math.min(PAGES.length - 1, i));
     stage.innerHTML = "";
-    if (PAGES[cur].note) stage.appendChild(el("p", "note", PAGES[cur].note));
     stage.appendChild(build(PAGES[cur]));
     indicator.textContent = PAGES[cur].label + "  (" + (cur + 1) + "/" + PAGES.length + ")";
     document.getElementById("prev").disabled = cur === 0;

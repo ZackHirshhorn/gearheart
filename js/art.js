@@ -881,7 +881,7 @@
     // welding sparks (amber-white accents)
     for (i = 0; i < 14; i++) s += flash(f1(480 + r() * 240), f1(360 + r() * 140), 0.5 + r() * 0.7);
     s += '<path d="M520 420L560 410" stroke="#ffe9a0" stroke-width="3" opacity=".8"/>';
-    s += dan(240, 720, 2.0, "point", false, { look: 1 });
+    s += dan(240, 720, 2.0, "point", true, { look: 1 });
     return s;
   };
 
