@@ -35,3 +35,11 @@ A planetary gear set: a red and white outer ring gear with fine teeth and a blue
 - `js/app.js`: page/panel layout data, script text, navigation, Shield Lab and Torque Wave logic
 - `check.js`: sanity check (`node check.js`): renders every panel listed in `js/app.js`, confirms the SVG is well-formed, and checks the Shield has 6 planet gears and 6 stars
 - `PROMPTS.md`: AI image prompt pack
+
+## Credits / Attribution
+
+The Shield design is inspired by the 3D model [Planetary Gears Fidget (print in place)](https://www.printables.com/model/232551-planetary-gears-fidget-print-in-place) on Printables. See the model page for its designer and license terms.
+
+The reference image used for the Shield (red, white and blue, with six star-cut planet gears and a hollow sun gear) is the author's own painting of that model. The comic's SVG art and `PROMPTS.md` are based on it.
+
+Photos of the printed Shield are coming soon, once the print is finished.
