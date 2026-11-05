@@ -6,7 +6,6 @@
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* rect = [x, y, w, h] in a 800 x 1100 page. ov = overlays in HTML. */
-  var COMING = "Pages 4-6 are coming: Dan's current surge saves Walt, the machines start to talk to him, Walt gives him the shield from over the tool crib, and Hollis's machines ship by freight from Baltimore to Ohio. For now, Page 7 jumps ahead to the Torque Wave fight.";
   var PAGES = [
     { label: "Prologue", panels: [
       { rect: [0, 0, 800, 1100], art: "prologue", ov: [
@@ -35,7 +34,7 @@
       { rect: [12, 716, 776, 372], art: "p2d", ov: [
         { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:30%;--tx:60%", who: "HOLLIS", text: "Ninety days. Can you do it?" },
         { t: "bubble", pos: "tr", style: "right:3%;top:3%;max-width:30%;--tx:30%", who: "DAN", text: "Ship me the machines." }] }] },
-    { label: "Page 3", note: "Up next: Pages 4-6 are coming. This issue skips ahead to Page 7.", panels: [
+    { label: "Page 3", panels: [
       { rect: [12, 12, 776, 300], art: "p3a", ov: [
         { t: "cap wide", pos: "bl", style: "max-width:62%", text: "A boardroom overseas. Meridian Pacific Consortium, a state-backed manufacturing giant, owns the plant Hollis is leaving." }] },
       { rect: [12, 324, 380, 380], art: "p3b", ov: [
@@ -47,7 +46,40 @@
       { rect: [12, 716, 776, 372], art: "p3d", ov: [
         { t: "cap", pos: "tl", style: "max-width:30%", text: "Shao slides over a file marked HOLLIS / ASHFORD." },
         { t: "bubble", pos: "tr", style: "right:2%;top:3%;max-width:31%;--tx:30%", who: "SHAO", text: "The President's program rests on the first plants succeeding. Make this one fail." }] }] },
-    { label: "Page 7", note: COMING, panels: [
+    { label: "Page 4", panels: [
+      { rect: [12, 12, 776, 360], art: "p4a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "Night. Dan and Walt restart the plant's old rolling mill for the first time in twenty years." },
+        { t: "sfx big", pos: "tr", style: "font-size:5cqw;top:6%;right:6%", text: "KRAK" }] },
+      { rect: [12, 384, 380, 320], art: "p4b", ov: [
+        { t: "cap", pos: "bl", style: "max-width:62%", text: "Dan grabs the live drive housing to wrench it away. A surge of current arcs through him." },
+        { t: "sfx big", pos: "tr", style: "font-size:4.4cqw;top:3%;right:4%", text: "KZZZRRRAAAK" }] },
+      { rect: [404, 384, 384, 320], art: "p4c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:52%", text: "Later, in the hospital, Dan wakes up. A heart monitor beeps beside him. He turns his head toward it." },
+        { t: "cap dan", pos: "bl", style: "max-width:70%", who: "DAN", text: "I could hear it. Not the beep. The machine. Its transformer was humming a little off." }] },
+      { rect: [12, 716, 776, 372], art: "p4d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:36%", text: "Back on the plant floor, Dan touches a seized press, and it frees up and runs true." },
+        { t: "cap", pos: "br", style: "max-width:54%", text: "Whatever happened that night, machines talk to me now. Where they're worn. Where they're out of true. Where they need to go." }] }] },
+    { label: "Page 5", panels: [
+      { rect: [12, 12, 776, 300], art: "p5a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "Dan walks an empty bay with chalk, marking the floor without measuring." },
+        { t: "cap dan", pos: "br", style: "max-width:44%", who: "DAN", text: "I see a whole line before it's built." }] },
+      { rect: [12, 324, 380, 380], art: "p5b", ov: [
+        { t: "cap dan", pos: "bl", style: "max-width:60%", who: "DAN", text: "I make old machines run like new." }] },
+      { rect: [404, 324, 384, 380], art: "p5c", ov: [
+        { t: "cap dan", pos: "bl", style: "max-width:62%", who: "DAN", text: "And I can teach it. That matters most. A factory is people." }] },
+      { rect: [12, 716, 776, 372], art: "p5d", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:4%;max-width:44%;--tx:55%", who: "WALT", text: "Your dad would want you to have this back. Looks like you'll need it." }] }] },
+    { label: "Page 6", panels: [
+      { rect: [12, 12, 776, 360], art: "p6a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "The Port of Baltimore. Hollis's sixty machines arrive in crates, then load onto a freight train bound for Ohio." }] },
+      { rect: [12, 384, 380, 320], art: "p6b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:58%", text: "Dan rides the train, with the shield strapped to his back and a hard hat on." }] },
+      { rect: [404, 384, 384, 320], art: "p6c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:60%;font-size:1.6cqw", text: "Night in the mountains of West Virginia. Trucks with no lights pull alongside the tracks. Mercenaries hired by Voss, led by KRAIT, raise their rifles." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:5%;max-width:60%;--tx:30%;font-size:1.7cqw", who: "KRAIT", text: "Hit the flatcars. Wreck the machines. No line, no factory." }] },
+      { rect: [12, 716, 776, 372], art: "p6d", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:40%;--tx:40%", who: "DAN", text: "Those are two hundred jobs. You don't touch them." }] }] },
+    { label: "Page 7", panels: [
       { rect: [12, 12, 300, 260], art: "p7a", ov: [
         { t: "cap", pos: "tl", style: "max-width:92%;font-size:1.5cqw", text: "Night, the West Virginia mountains. Krait's mercenaries, in trucks running without lights, open fire on the freight train." }] },
       { rect: [324, 12, 464, 532], art: "p7b", ov: [
@@ -65,7 +97,69 @@
         { t: "cap dan", pos: "tr", style: "max-width:62%;font-size:1.5cqw;top:6%", who: "DAN", text: "Every machine has a drive. This one's mine." }] },
       { rect: [284, 928, 504, 160], art: "p7f", ov: [
         { t: "sfx big", pos: "tr", style: "font-size:6cqw;top:4%;right:5%", text: "KRA-THOOM" },
-        { t: "cap", pos: "bl", style: "max-width:44%;font-size:1.5cqw", text: "Krait, dazed in the dirt, slams his hand down on a detonator." }] }] }
+        { t: "cap", pos: "bl", style: "max-width:44%;font-size:1.5cqw", text: "Krait, dazed in the dirt, slams his hand down on a detonator." }] }] },
+    { label: "Page 8", panels: [
+      { rect: [12, 12, 776, 360], art: "p8a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "The train jumps the track. Crates spill down the embankment." }] },
+      { rect: [12, 384, 380, 320], art: "p8b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:60%", text: "Morning. Dan stands among the wreckage. Machines lie broken, scattered across the hillside." }] },
+      { rect: [404, 384, 384, 320], art: "p8c", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:64%;--tx:40%;font-size:1.6cqw", who: "HOLLIS", text: "That's it. The insurance alone will take months. The program's first plant, and it's dead on a hillside." }] },
+      { rect: [12, 716, 776, 372], art: "p8d", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:46%;--tx:35%", who: "DAN", text: "No. They're hurt, not dead. I can hear every one of them." }] }] },
+    { label: "Page 9", panels: [
+      { rect: [12, 12, 776, 300], art: "p9a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "Montage. Ashford workers drive down with flatbeds and cranes to haul the machines home." }] },
+      { rect: [12, 324, 380, 380], art: "p9b", ov: [
+        { t: "cap dan", pos: "tl", style: "max-width:66%", who: "DAN", text: "Some parts we machined ourselves. Some came from shops in Michigan, Indiana, and Pennsylvania that were still hanging on." }] },
+      { rect: [404, 324, 384, 380], art: "p9c", ov: [
+        { t: "bubble", pos: "tl", style: "left:3%;top:3%;max-width:56%;--tx:45%", who: "WALT", text: "Your granddads did this. Now it's your turn." }] },
+      { rect: [12, 716, 776, 372], art: "p9d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "A calendar on the wall: DAY 87. The line is complete and gleaming." }] }] },
+    { label: "Page 10", panels: [
+      { rect: [12, 12, 776, 360], art: "p10a", ov: [
+        { t: "cap wide", pos: "bl", style: "max-width:62%", text: "The ribbon-cutting. Hollis, the workers, and cameras gather. Krait, disguised as a contractor, slips away from the main drive." }] },
+      { rect: [12, 384, 380, 320], art: "p10b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:52%", text: "Hollis reaches for the start button. Dan freezes." },
+        { t: "cap dan", pos: "br", style: "max-width:62%", who: "DAN", text: "Something was wrong. The main drive was screaming." }] },
+      { rect: [404, 384, 384, 320], art: "p10c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%", text: "Dan leaps. The shield catches a pressure fitting as it blows, and its spinning gears contain the burst." },
+        { t: "sfx big", pos: "tr", style: "font-size:4cqw;top:3%;right:3%", text: "KSSHHHH-CLANG" }] },
+      { rect: [12, 716, 776, 372], art: "p10d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:44%", text: "Dan chases Krait through the plant. Workers block the exits with forklifts, and Krait is cornered." }] }] },
+    { label: "Page 11", panels: [
+      { rect: [12, 12, 380, 360], art: "p11a", ov: [
+        { t: "cap", pos: "bl", style: "max-width:70%", text: "Federal agents arrest Krait. His phone shows a message thread with Voss." }] },
+      { rect: [404, 12, 384, 360], art: "p11b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:56%", text: "Voss is arrested at a private airfield." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:5%;max-width:60%;--tx:30%", who: "VOSS", text: "It's one plant. You can't move a whole economy." }] },
+      { rect: [12, 384, 380, 320], art: "p11c", ov: [
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:58%;--tx:40%", who: "DAN", text: "We're not moving it. We're bringing it home, one line at a time." }] },
+      { rect: [404, 384, 384, 320], art: "p11d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:46%", text: "Back at Ashford, Hollis presses the button. The line roars to life." },
+        { t: "sfx big", pos: "br", style: "font-size:4cqw;bottom:4%;right:3%", text: "VRRRRRRRMMMMM" }] }] },
+    { label: "Page 12", panels: [
+      { rect: [12, 12, 380, 360], art: "p12a", ov: [
+        { t: "cap", pos: "tl", style: "max-width:46%", text: "The first bearing rolls off the line. Walt picks it up and holds it to the light." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:5%;max-width:58%;--tx:30%", who: "WALT", text: "Made in Ashford. Thought I'd never say that again." }] },
+      { rect: [404, 12, 384, 360], art: "p12b", ov: [
+        { t: "cap", pos: "tl", style: "max-width:40%;font-size:1.5cqw", text: "The President returns for the opening, in public, on camera." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:4%;max-width:62%;--tx:30%;font-size:1.5cqw", who: "THE PRESIDENT", text: "They said it couldn't be done. Two hundred jobs, ninety days. This is the first of many. Forty more companies have signed on to bring their lines home this year." }] },
+      { rect: [12, 384, 776, 320], art: "p12c", ov: [
+        { t: "cap", pos: "tl", style: "max-width:30%", text: "Afterward, he speaks with Dan privately." },
+        { t: "bubble", pos: "tl", style: "left:3%;top:20%;max-width:46%;--tx:40%", who: "THE PRESIDENT", text: "Every factory that comes back makes us stronger, and makes us harder to push around. If we don't do this, we'll depend on our rivals for everything. We can't let that happen." }] },
+      { rect: [12, 716, 776, 372], art: "p12d", ov: [
+        { t: "cap", pos: "tl", style: "max-width:30%", text: "Dan nods." },
+        { t: "bubble", pos: "tr", style: "right:3%;top:5%;max-width:40%;--tx:40%", who: "DAN", text: "Then send me the next one." }] }] },
+    { label: "Page 13", panels: [
+      { rect: [0, 0, 800, 1100], art: "p13", ov: [
+        { t: "cap wide", pos: "tl", style: "max-width:52%", text: "We never lost the ideas. We lost the hands." },
+        { t: "cap", pos: "tr", style: "right:3%;top:3%;max-width:40%", text: "I'm here to bring them back." },
+        { t: "cap wide", pos: "bc", style: "max-width:72%", text: "GEARHEART returns in Issue #2: \"Forty Lines.\"" }] }] },
+    { label: "Post-Credits", panels: [
+      { rect: [12, 12, 776, 1076], art: "pct", ov: [
+        { t: "cap", pos: "tl", style: "max-width:62%", text: "Meridian Pacific's boardroom. Shao watches footage of the line starting." },
+        { t: "bubble", pos: "br", style: "right:3%;bottom:6%;max-width:58%;--tx:30%", who: "SHAO", text: "One plant survived. Forty more are coming. Then we stop the next forty." }] }] }
   ];
 
   var stage = document.getElementById("stage");
@@ -107,9 +201,8 @@
   function show(i) {
     cur = Math.max(0, Math.min(PAGES.length - 1, i));
     stage.innerHTML = "";
-    if (PAGES[cur].note) stage.appendChild(el("p", "note", PAGES[cur].note));
     stage.appendChild(build(PAGES[cur]));
-    indicator.textContent = PAGES[cur].label + "  (" + (cur + 1) + "/" + PAGES.length + ")" + (cur === PAGES.length - 1 ? " - Pages 4-6 coming" : "");
+    indicator.textContent = PAGES[cur].label + "  (" + (cur + 1) + "/" + PAGES.length + ")";
     document.getElementById("prev").disabled = cur === 0;
     document.getElementById("next").disabled = cur === PAGES.length - 1;
     if (history.replaceState) history.replaceState(null, "", "#" + cur);
